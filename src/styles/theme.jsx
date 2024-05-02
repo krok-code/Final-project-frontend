@@ -40,7 +40,8 @@ export const theme = Object.freeze({
 
   fontSizes: {
     large: '40px',
-    title: '18px',
+    title: '28px',
+    subtitle: '18px',
     text: '14px',
     info: '12px',
   },
@@ -50,6 +51,11 @@ export const theme = Object.freeze({
     medium: 600,
     normal: 500,
     regular: 400,
+  },
+  letterSpacing: {
+    medium: '-1.12px',
+    normal: '-1.6px',
+    small: '-0.28px',
   },
 
   borderRadius: {
@@ -65,5 +71,9 @@ export const theme = Object.freeze({
   shadow: {
     popup: '0px 4px 16px 0px rgba(17, 17, 17, 0.10)',
     editPopup: '0px 4px 16px 0px rgba(22, 22, 22, 0.05)',
+  },
+
+  transition: {
+    normal: 'all 150ms linear',
   },
 });
