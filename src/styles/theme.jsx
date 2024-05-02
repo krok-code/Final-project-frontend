@@ -64,8 +64,8 @@ export const theme = Object.freeze({
   },
 
   border: {
-    darkTheme: 'border: 1px solid #BEDBB0;',
-    purpleTheme: 'border: 1px solid #5255BC;',
+    darkTheme: ' 1px solid #BEDBB0;',
+    purpleTheme: ' 1px solid #5255BC;',
     popupCard: '1px solid rgba(190, 219, 176, 0.50)',
   },
   shadow: {
@@ -75,5 +75,9 @@ export const theme = Object.freeze({
 
   transition: {
     normal: 'all 150ms linear',
+  },
+
+  transform: {
+    transformY: 'translateY(-50%)',
   },
 });

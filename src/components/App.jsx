@@ -13,6 +13,8 @@ export const App = () => {
       }}
     >
       <WelcomePage />
+      {/* <Registration /> */}
+      {/* <AuthPage /> */}
     </div>
   );
 };
