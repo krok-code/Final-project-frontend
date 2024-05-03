@@ -1,27 +1,13 @@
-import { logInSchema } from '../../components/validation/schema';
-import { useState } from 'react';
+import { registrationSchema } from '../../validation/schema';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { Eye } from 'assets/fonts/images/icons/Eye';
-import { EyeSlash } from 'assets/fonts/images/icons/EyeSlash';
-import { registration } from '../../redux/authorization/authReducer';
+import { registration } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
 
-import {
-  Wrap,
-  Input,
-  Button,
-  Form,
-  Error,
-} from '../RegistrationPg/RegistrationPg.styled';
+import { Wrap, Input, Button, Form, Error } from './RegistrationPg.styled';
 
-function LogIn() {
-  const [showPassword, setShowPassword] = useState(false);
+function Registration() {
   const dispatch = useDispatch();
-
-  const swapPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   const {
     handleSubmit,
@@ -29,16 +15,18 @@ function LogIn() {
     register,
   } = useForm({
     initialValues: {
+      name: '',
       email: '',
       password: '',
     },
-    validationSchema: logInSchema,
+    validationSchema: registrationSchema,
   });
 
   const onSubmit = data => {
     dispatch(registration(data))
       .unwrap()
       .then(() => {
+        register('name').value = '';
         register('email').value = '';
         register('password').value = '';
 
@@ -53,6 +41,17 @@ function LogIn() {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
+          type="name"
+          placeholder="Enter your name"
+          id="name"
+          name="name"
+          autoComplete="off"
+          {...register('name')}
+          $error={errors.name}
+        />
+        {errors.name && <Error>{errors.name.message}</Error>}
+
+        <Input
           type="email"
           id="email"
           name="email"
@@ -65,7 +64,7 @@ function LogIn() {
 
         <Wrap>
           <Input
-            type={showPassword ? 'text' : 'password'}
+            type="password"
             id="password"
             name="password"
             placeholder="Create a password"
@@ -73,18 +72,16 @@ function LogIn() {
             {...register('password')}
             $error={errors.password}
           />
-          <button type="button" onClick={swapPassword}>
-            {showPassword ? <Eye /> : <EyeSlash />}
-          </button>
+
           {errors.password && <Error>{errors.password.message}</Error>}
         </Wrap>
 
         <Button type="submit" disabled={!isValid}>
-          Log In
+          Register Now
         </Button>
       </Form>
     </>
   );
 }
 
-export default LogIn;
+export default Registration;

@@ -1,108 +1,128 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { theme } from 'styles/theme';
-
-export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 100vh;
-  background: linear-gradient(
-    180deg,
-    rgba(196, 196, 196, 0) 25%,
-    ${theme.colors.primaryGreen} 92.19%
-  );
-`;
+import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  background: var(--light-green-gradient);
 
-  @media (min-width: 375px) {
-    width: 335px;
+  img {
+    margin-bottom: 14px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 24px;
+    }
   }
 
-  @media (min-width: 768px) {
-    width: 473px;
+  p {
+    margin-bottom: 48px;
+    text-align: center;
+    max-width: 280px;
+
+    @media screen and (min-width: 375px) {
+      max-width: 335px;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 470px;
+      font-size: 14px;
+      line-height: 1.29;
+    }
   }
 `;
 
-export const Img = styled.img`
-  width: 124px;
-  height: 124px;
-
-  @media (min-width: 768px) {
-    width: 162px;
-    height: 162px;
-  }
-`;
-
-export const Logo = styled.div`
+export const LogoWrap = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
-  height: 42px;
-  margin-top: 14px;
+  margin-bottom: 24px;
 
-  @media (min-width: 768px) {
-    margin-top: 24px;
-    height: 60px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.04em;
+
+    @media screen and (min-width: 768px) {
+      font-size: 40px;
+    }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--black-color);
+
+    @media screen and (min-width: 768px) {
+      width: 48px;
+      height: 48px;
+    }
+
+    svg {
+      @media screen and (min-width: 768px) {
+        width: 18px;
+        height: 24px;
+      }
+    }
   }
 `;
 
-export const ImgLogo = styled.svg`
-  width: 40px;
-  height: 40px;
-
-  @media (min-width: 768px) {
-    width: 48px;
-    height: 48px;
-  }
+export const AuthNavWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 `;
 
-export const Title = styled.h1`
-  color: ${theme.colors.primaryDark};
-  font-size: ${theme.fontSizes.text};
-  font-weight: ${theme.fontWeights.medium};
-  letter-spacing: ${theme.letterSpacing.medium};
-
-  @media (min-width: 768px) {
-    font-size: ${theme.fontSizes.large};
-    letter-spacing: ${theme.letterSpacing.normal};
-  }
-`;
-
-export const Text = styled.p`
-  margin-top: 24px;
-  margin-bottom: 48px;
+export const AuthRegisterLink = styled(Link)`
+  font-weight: 500;
   text-align: center;
-  color: ${theme.colors.primaryDark};
-  font-size: ${theme.fontSizes.text};
-  line-height: ${theme.lineHeights.normal};
-  letter-spacing: ${theme.letterSpacing.small};
-`;
+  min-width: 280px;
+  border-radius: 8px;
+  padding: 14px 0;
+  color: var(--white-color);
+  background-color: var(--black-color);
+  transition: color var(--easedTransition),
+    background-color var(--easedTransition);
 
-export const Btn = styled(NavLink)`
-  margin-bottom: 14px;
-  text-align: center;
-  width: calc(100% - 40px);
-  padding: 14px;
-  text-decoration: none;
-  font-size: ${theme.fontSizes.text};
-  font-weight: ${theme.fontWeights.normal};
-  letter-spacing: ${theme.letterSpacing.small};
-  color: ${theme.colors.primaryDark};
-  &:hover {
-    color: ${theme.colors.primaryWhite};
-    border-radius: ${theme.borderRadius.main};
-    background: ${theme.colors.primaryDark};
-    transition: ${theme.transition.normal};
+  @media screen and (min-width: 375px) {
+    min-width: 335px;
   }
 
-  @media (min-width: 768px) {
-    width: 344px;
+  @media screen and (min-width: 768px) {
+    max-width: 340px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      background-color: var(--white-color);
+      color: var(--black-color);
+    }
+  }
+`;
+
+export const AuthLoginLink = styled(Link)`
+  font-weight: 500;
+  transition: color var(--easedTransition);
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      color: var(--white-color);
+    }
   }
 `;
