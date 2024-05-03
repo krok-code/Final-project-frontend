@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { registration } from '../../redux/authorization/authReducer';
+import { registration } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
-import { registrationSchema } from '../validation/schema';
+import { registrationSchema } from '../../validation/schema';
 import { Wrap, Input, Button, Form, Error } from './RegistrationPg.styled';
 import { yupResolver } from '@hookform/resolvers/yup';
 

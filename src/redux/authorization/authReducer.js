@@ -12,20 +12,19 @@ export const setToken = token => {
 export const clearToken = () => {
   authInstance.defaults.headers.common.Authorization = '';
 };
-export const registration =
-  createAsyncThunk();
-  // 'auth/apiRegisterUser',
-  // async (formData, thunkApi) => {
-  //   try {
-  //     const { data } = await authInstance.post('/auth/register', formData);
-  //     setToken(data.token);
-  //     return data;
-  //   } catch (error) {
-  //     return thunkApi.rejectWithValue(error.message);
-  //   }
-  // }
+export const registration = createAsyncThunk();
+// 'auth/apiRegisterUser',
+// async (formData, thunkApi) => {
+//   try {
+//     const { data } = await authInstance.post('/auth/register', formData);
+//     setToken(data.token);
+//     return data;
+//   } catch (error) {
+//     return thunkApi.rejectWithValue(error.message);
+//   }
+// }
 
-export const logIn = createAsyncThunk(
+export const signin = createAsyncThunk(
   'auth/apiLoginUser',
   async (formData, thunkApi) => {
     try {

@@ -1,10 +1,11 @@
-import { logInSchema } from '../../components/validation/schema';
+import { logInSchema } from '../../validation/schema';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Eye } from 'assets/fonts/images/icons/Eye';
-import { EyeSlash } from 'assets/fonts/images/icons/EyeSlash';
-import { logIn } from '../../redux/authorization/authReducer';
+import { EyeSlash } from 'assets/fonts/images/icons/EyeCrossed';
+
+import { signin } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -27,7 +28,7 @@ function LogIn() {
   const {
     handleSubmit,
     formState: { errors, touched = {}, isValid },
-    login,
+    register,
   } = useForm({
     initialValues: {
       email: '',
@@ -38,7 +39,7 @@ function LogIn() {
 
   const onSubmit = data => {
     console.log(data);
-    dispatch(logIn(data))
+    dispatch(signin(data))
       .unwrap()
       .then(() => {
         toast.success('Registration successful!');
@@ -57,7 +58,7 @@ function LogIn() {
           name="email"
           placeholder="Enter your email"
           autoComplete="off"
-          {...login('email')}
+          {...register('email')}
           $error={touched.email && errors.email}
         />
         {touched.email && errors.email && <Error>{errors.email}</Error>}
@@ -69,7 +70,7 @@ function LogIn() {
             name="password"
             placeholder="Create a password"
             autoComplete="off"
-            {...login('password')}
+            {...register('password')}
             $error={touched.password && errors.password}
           />
           {touched.password && errors.password && (

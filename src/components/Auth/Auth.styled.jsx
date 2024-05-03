@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { theme } from '../../assets/fonts/styles/theme';
 
 export const WelcomeWrapper = styled.div`
   height: 100vh;
+  width: 100%;
   background: linear-gradient(
     180deg,
     rgba(196, 196, 196, 0) 25%,
@@ -15,10 +15,10 @@ export const WelcomeWrapper = styled.div`
 `;
 
 export const Modal = styled.div`
-  border: 1px solid var(--black-color);
+  border: 1px solid #000;
   width: calc(100% - 84px);
   padding: 24px;
-  background: var(--modal-background);
+  background: #151515;
   border-radius: 8px;
 
   @media (min-width: 375px) {
@@ -50,6 +50,6 @@ export const ModalNavItem = styled(NavLink)`
 
   &:hover,
   &.active {
-    color: var(--white-color);
+    color: #fff;
   }
 `;

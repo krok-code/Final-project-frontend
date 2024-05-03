@@ -1,63 +1,56 @@
-import WelcomeMob1x from '../../assets/fonts/images/welcome/welcome-mob-1x.png';
-import WelcomeMob2x from '../../assets/fonts/images/welcome/welcome-mob-2x.png';
-import WelcomeTab1x from '../../assets/fonts/images/welcome/welcome-tab-1x.png';
-import WelcomeTab2x from '../../assets/fonts/images/welcome/welcome-tab-2x.png';
-import WelcomeDes1x from '../../assets/fonts/images/welcome/welcome-desk-1x.png';
-import WelcomeDes2x from '../../assets/fonts/images/welcome/welcome-desk-2x.png';
+import welcomemob1x from '../../assets/fonts/images/welcome/welcome-mob-1x.png';
+import welcomemob2x from '../../assets/fonts/images/welcome/welcome-mob-2x.png';
+import welcomemtab1x from '../../assets/fonts/images/welcome/welcome-tab-1x.png';
+import welcomemtab2x from '../../assets/fonts/images/welcome/welcome-tab-2x.png';
+import welcomemdes1x from '../../assets/fonts/images/welcome/welcome-desk-1x.png';
+import welcomemdes2x from '../../assets/fonts/images/welcome/welcome-desk-2x.png';
 import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
 import {
+  Wrapper,
   Container,
-  LogoWrap,
-  AuthNavWrap,
-  AuthRegisterLink,
-  AuthLoginLink,
+  ImgLogo,
+  Title,
+  Text,
+  Btn,
+  Logo,
 } from './WelcomePg.styled';
-
 const Welcome = () => {
   return (
-    <Container>
-      <picture>
-        <source
-          media="(max-width: 375px)"
-          srcSet={`${WelcomeMob1x} 1x, ${WelcomeMob2x} 2x`}
-        />
-
-        <source
-          media="(min-width: 768px)"
-          srcSet={`${WelcomeTab1x} 1x, ${WelcomeTab2x} 2x`}
-        />
-
-        <source
-          media="(min-width: 1440px)"
-          srcSet={`${WelcomeDes1x} 1x, ${WelcomeDes2x} 2x`}
-        />
-
-        <img
-          src={WelcomeMob1x}
-          srcSet={`${WelcomeMob1x} 1x, ${WelcomeMob2x} 2x`}
-          alt="logo"
-        />
-      </picture>
-
-      <LogoWrap>
-        <span>
-          {' '}
-          <use href={sprite + '#logo'} />
-        </span>
-        <h1>Task Pro</h1>
-      </LogoWrap>
-
-      <p>
-        Supercharge your productivity and take control of your tasks with Task
-        Pro - Don't wait, start achieving your goals now!
-      </p>
-
-      <AuthNavWrap>
-        <AuthRegisterLink to="/auth/register">Registration</AuthRegisterLink>
-        <AuthLoginLink to="/auth/login">Log In</AuthLoginLink>
-      </AuthNavWrap>
-    </Container>
+    <Wrapper>
+      <Container>
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcSet={`${welcomemdes1x} 1x, ${welcomemdes2x} 2x`}
+            type="image/png"
+          />
+          <source
+            media="(min-width: 767px)"
+            srcSet={`${welcomemtab1x} 1x, ${welcomemtab2x} 2x`}
+            type="image/png"
+          />
+          <source
+            media="(max-width: 767px)"
+            srcSet={`${welcomemob1x} 1x, ${welcomemob2x} 2x`}
+            type="image/png"
+          />
+          <img src={welcomemdes1x} alt="logo" />
+        </picture>
+        <Logo>
+          <ImgLogo>
+            {' '}
+            <use href={sprite + '#icon-logo'} />
+          </ImgLogo>
+          <Title>Task Pro</Title>
+        </Logo>
+        <Text>
+          Supercharge your productivity and take control of your tasks with Task
+          Pro - Don't wait, start achieving your goals now!
+        </Text>
+        <Btn to="/auth/register">Registration</Btn>
+        <Btn to="/auth/login">Log In</Btn>
+      </Container>
+    </Wrapper>
   );
 };
-
 export default Welcome;

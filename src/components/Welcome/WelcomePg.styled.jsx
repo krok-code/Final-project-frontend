@@ -1,128 +1,91 @@
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
+`;
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width: 100vw;
-  height: 100vh;
-  background: var(--light-green-gradient);
-
-  img {
-    margin-bottom: 14px;
-
-    @media screen and (min-width: 768px) {
-      margin-bottom: 24px;
-    }
+  flex-direction: column;
+  margin: 20px;
+  @media (min-width: 375px) {
+    width: 335px;
   }
-
-  p {
-    margin-bottom: 48px;
-    text-align: center;
-    max-width: 280px;
-
-    @media screen and (min-width: 375px) {
-      max-width: 335px;
-    }
-
-    @media screen and (min-width: 768px) {
-      max-width: 470px;
-      font-size: 14px;
-      line-height: 1.29;
-    }
+  @media (min-width: 768px) {
+    width: 473px;
   }
 `;
-
-export const LogoWrap = styled.div`
+export const Img = styled.img`
+  width: 124px;
+  height: 124px;
+  @media (min-width: 768px) {
+    width: 162px;
+    height: 162px;
+  }
+`;
+export const Logo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 14px;
-  margin-bottom: 24px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 30px;
-  }
-
-  h1 {
-    font-weight: 600;
-    font-size: 28px;
-    letter-spacing: -0.04em;
-
-    @media screen and (min-width: 768px) {
-      font-size: 40px;
-    }
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: var(--black-color);
-
-    @media screen and (min-width: 768px) {
-      width: 48px;
-      height: 48px;
-    }
-
-    svg {
-      @media screen and (min-width: 768px) {
-        width: 18px;
-        height: 24px;
-      }
-    }
+  height: 42px;
+  margin-top: 14px;
+  @media (min-width: 768px) {
+    margin-top: 24px;
+    height: 60px;
   }
 `;
-
-export const AuthNavWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+export const ImgLogo = styled.svg`
+  width: 40px;
+  height: 40px;
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
 `;
-
-export const AuthRegisterLink = styled(Link)`
-  font-weight: 500;
+export const Title = styled.h1`
+  color: #161616;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -1.12px;
+  @media (min-width: 768px) {
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+`;
+export const Text = styled.p`
+  margin-top: 24px;
+  margin-bottom: 48px;
   text-align: center;
-  min-width: 280px;
-  border-radius: 8px;
-  padding: 14px 0;
-  color: var(--white-color);
-  background-color: var(--black-color);
-  transition: color var(--easedTransition),
-    background-color var(--easedTransition);
-
-  @media screen and (min-width: 375px) {
-    min-width: 335px;
-  }
-
-  @media screen and (min-width: 768px) {
-    max-width: 340px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    &:hover,
-    &:focus {
-      background-color: var(--white-color);
-      color: var(--black-color);
-    }
-  }
+  color: #161616;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28em;
+  letter-spacing: -0.28px;
 `;
-
-export const AuthLoginLink = styled(Link)`
+export const Btn = styled(NavLink)`
+  margin-bottom: 14px;
+  text-align: center;
+  width: calc(100% - 40px);
+  padding: 14px;
+  text-decoration: none;
+  font-size: 14px;
   font-weight: 500;
-  transition: color var(--easedTransition);
-
-  @media screen and (min-width: 1440px) {
-    &:hover,
-    &:focus {
-      color: var(--white-color);
-    }
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: #161616;
+  &:hover {
+    color: #fff;
+    border-radius: 8px;
+    background: #161616;
+    transition: opacity 200ms linear;
+  }
+  @media (min-width: 768px) {
+    width: 344px;
   }
 `;
