@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
     --cubicTransition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -21,7 +21,7 @@ html[data-theme='dark']{
   --background-color: #1f1f1f;
   --grey-text-color:rgba(255, 255, 255, 0.8);
   --lightgrey-text-color:rgba(255, 255, 255, 0.5);
-  --accent-color:#bedbb0;
+  --accent-color:#9DC888;
   --input-color:#bedbb0;
   --chose-color:#1f1f1f;
   --card-bg: #121212;

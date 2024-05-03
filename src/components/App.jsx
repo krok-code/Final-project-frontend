@@ -1,4 +1,5 @@
 import WelcomePage from 'pages/WelcomePg/WelcomePg';
+import Registration from './RegistrationPg/RegistrationPg';
 
 export const App = () => {
   return (

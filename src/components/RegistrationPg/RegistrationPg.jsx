@@ -1,35 +1,33 @@
-import { registrationSchema } from '../../components/validation/schema';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registration } from '../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
-
+import { registrationSchema } from '../validation/schema';
 import { Wrap, Input, Button, Form, Error } from './RegistrationPg.styled';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 function Registration() {
   const dispatch = useDispatch();
 
   const {
-    handleSubmit,
-    formState: { errors, isValid },
     register,
+    handleSubmit,
+    formState: { errors, touched = {}, isValid },
   } = useForm({
-    initialValues: {
+    mode: 'onBlur', // Validate on blur
+    defaultValues: {
       name: '',
       email: '',
       password: '',
     },
-    validationSchema: registrationSchema,
+    resolver: yupResolver(registrationSchema),
   });
 
   const onSubmit = data => {
+    console.log(data);
     dispatch(registration(data))
       .unwrap()
       .then(() => {
-        register('name').value = '';
-        register('email').value = '';
-        register('password').value = '';
-
         toast.success('Registration successful!');
       })
       .catch(() => {
@@ -41,39 +39,34 @@ function Registration() {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
-          type="name"
+          type="text"
           placeholder="Enter your name"
           id="name"
-          name="name"
-          autoComplete="off"
           {...register('name')}
-          $error={errors.name}
+          $error={touched.name && errors.name}
         />
-        {errors.name && <Error>{errors.name.message}</Error>}
+        {touched.name && errors.name && <Error>{errors.name}</Error>}
 
         <Input
           type="email"
           id="email"
-          name="email"
           placeholder="Enter your email"
-          autoComplete="off"
           {...register('email')}
-          $error={errors.email}
+          $error={touched.email && errors.email}
         />
-        {errors.email && <Error>{errors.email.message}</Error>}
+        {touched.email && errors.email && <Error>{errors.email}</Error>}
 
         <Wrap>
           <Input
             type="password"
             id="password"
-            name="password"
             placeholder="Create a password"
-            autoComplete="off"
             {...register('password')}
-            $error={errors.password}
+            $error={touched.password && errors.password}
           />
-
-          {errors.password && <Error>{errors.password.message}</Error>}
+          {touched.password && errors.password && (
+            <Error>{errors.password}</Error>
+          )}
         </Wrap>
 
         <Button type="submit" disabled={!isValid}>

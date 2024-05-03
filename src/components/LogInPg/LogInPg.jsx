@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Eye } from 'assets/fonts/images/icons/Eye';
 import { EyeSlash } from 'assets/fonts/images/icons/EyeSlash';
-import { registration } from '../../redux/authorization/authReducer';
+import { logIn } from '../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
   Wrap,
@@ -25,23 +26,21 @@ function LogIn() {
 
   const {
     handleSubmit,
-    formState: { errors, isValid },
-    register,
+    formState: { errors, touched = {}, isValid },
+    login,
   } = useForm({
     initialValues: {
       email: '',
       password: '',
     },
-    validationSchema: logInSchema,
+    validationSchema: yupResolver(logInSchema),
   });
 
   const onSubmit = data => {
-    dispatch(registration(data))
+    console.log(data);
+    dispatch(logIn(data))
       .unwrap()
       .then(() => {
-        register('email').value = '';
-        register('password').value = '';
-
         toast.success('Registration successful!');
       })
       .catch(() => {
@@ -58,10 +57,10 @@ function LogIn() {
           name="email"
           placeholder="Enter your email"
           autoComplete="off"
-          {...register('email')}
-          $error={errors.email}
+          {...login('email')}
+          $error={touched.email && errors.email}
         />
-        {errors.email && <Error>{errors.email.message}</Error>}
+        {touched.email && errors.email && <Error>{errors.email}</Error>}
 
         <Wrap>
           <Input
@@ -70,13 +69,15 @@ function LogIn() {
             name="password"
             placeholder="Create a password"
             autoComplete="off"
-            {...register('password')}
-            $error={errors.password}
+            {...login('password')}
+            $error={touched.password && errors.password}
           />
+          {touched.password && errors.password && (
+            <Error>{errors.password}</Error>
+          )}
           <button type="button" onClick={swapPassword}>
             {showPassword ? <Eye /> : <EyeSlash />}
           </button>
-          {errors.password && <Error>{errors.password.message}</Error>}
         </Wrap>
 
         <Button type="submit" disabled={!isValid}>

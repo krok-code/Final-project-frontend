@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://krok-code.github.io/Final-project-frontend/",
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

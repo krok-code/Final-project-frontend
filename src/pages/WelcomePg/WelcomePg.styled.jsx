@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { theme } from 'styles/theme';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,11 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    rgba(196, 196, 196, 0) 25%,
-    ${theme.colors.primaryGreen} 92.19%
-  );
+  background: var(--light-green-gradient);
 `;
 
 export const Container = styled.div`
@@ -64,14 +59,16 @@ export const ImgLogo = styled.svg`
 `;
 
 export const Title = styled.h1`
-  color: ${theme.colors.primaryDark};
-  font-size: ${theme.fontSizes.text};
-  font-weight: ${theme.fontWeights.medium};
-  letter-spacing: ${theme.letterSpacing.medium};
+  color: var(--black-color);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -1.12px;
 
   @media (min-width: 768px) {
-    font-size: ${theme.fontSizes.large};
-    letter-spacing: ${theme.letterSpacing.normal};
+    font-size: 40px;
+    letter-spacing: -1.6px;
   }
 `;
 
@@ -79,10 +76,11 @@ export const Text = styled.p`
   margin-top: 24px;
   margin-bottom: 48px;
   text-align: center;
-  color: ${theme.colors.primaryDark};
-  font-size: ${theme.fontSizes.text};
-  line-height: ${theme.lineHeights.normal};
-  letter-spacing: ${theme.letterSpacing.small};
+  color: var(--black-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28em;
+  letter-spacing: -0.28px;
 `;
 
 export const Btn = styled(NavLink)`
@@ -91,15 +89,16 @@ export const Btn = styled(NavLink)`
   width: calc(100% - 40px);
   padding: 14px;
   text-decoration: none;
-  font-size: ${theme.fontSizes.text};
-  font-weight: ${theme.fontWeights.normal};
-  letter-spacing: ${theme.letterSpacing.small};
-  color: ${theme.colors.primaryDark};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: var(--black-color);
   &:hover {
-    color: ${theme.colors.primaryWhite};
-    border-radius: ${theme.borderRadius.main};
-    background: ${theme.colors.primaryDark};
-    transition: ${theme.transition.normal};
+    color: var(--white-color);
+    border-radius: 8px;
+    background: var(--black-color);
+    transition: opacity 200ms linear;
   }
 
   @media (min-width: 768px) {
