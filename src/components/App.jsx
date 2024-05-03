@@ -1,4 +1,4 @@
-import WelcomePage from 'pages/WelcomePg/WelcomePg';
+import WelcomePage from 'components/Welcome/WelcomePg';
 
 export const App = () => {
   return (
