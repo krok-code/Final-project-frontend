@@ -1,3 +1,6 @@
+import AuthPage from 'components/Auth/Auth';
+import LogIn from 'components/Auth/LogInPg/LogInPg';
+
 export const App = () => {
   return (
     <div
@@ -9,6 +12,8 @@ export const App = () => {
         fontSize: 40,
         color: '#010101',
       }}
-    ></div>
+    >
+      <AuthPage />
+    </div>
   );
 };

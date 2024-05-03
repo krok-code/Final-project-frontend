@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { modalReducer } from './modal/modalSlice';
 import {
+  persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -9,16 +11,18 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import { authReducer } from './authorization/authSlice';
+import storage from 'redux-persist/lib/storage';
 
-// const authConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const authConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
+    auth: persistReducer(authConfig, authReducer),
     modal: modalReducer,
   },
 
