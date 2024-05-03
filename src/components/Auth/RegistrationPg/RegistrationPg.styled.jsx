@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   position: relative;
-
+  width: 100%;
   button {
     display: flex;
     position: absolute;
@@ -45,14 +45,14 @@ export const Input = styled.input`
       color: #fc8181;
     }
   `}
-  @media screen and (min-width: 320px) {
-    width: 287px;
+
+  @media screen and (min-width: 375px) {
+    width: 285px;
   }
   @media screen and (min-width: 768px) {
-    width: 336px;
   }
   @media screen and (min-width: 1440px) {
-    width: 384px;
+    width: 306px;
   }
 `;
 
@@ -79,6 +79,12 @@ export const Button = styled.button`
   &:hover {
     transition: opacity 200ms linear;
     background-color: #9dc888;
+  }
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 344px;
   }
 `;
 export const Form = styled.form`

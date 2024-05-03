@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const WelcomeWrapper = styled.div`
+export const Wrap = styled.div`
   height: 100vh;
   width: 100%;
   background: linear-gradient(
@@ -9,9 +9,24 @@ export const WelcomeWrapper = styled.div`
     rgba(196, 196, 196, 0) 25%,
     #bedbb0 92.19%
   );
+`;
+
+export const WelcomeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  padding: 225px 20px;
+  @media screen and (min-width: 768px) {
+    width: 424px;
+    height: 332px;
+    padding: 346px 172px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 219px 508px;
+    width: 424px;
+    height: 332px;
+  }
 `;
 
 export const Modal = styled.div`
