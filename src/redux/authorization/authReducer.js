@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const authInstance = axios.create({
-  baseURL: 'https://final-project-backend-psdk.onrender.com/api',
+  baseURL: 'https://final-project-backend-hsxg.onrender.com/',
 });
 
 export const setToken = token => {
@@ -17,7 +17,7 @@ export const registration = createAsyncThunk(
   'users/register',
   async (formData, thunkApi) => {
     try {
-      const { data } = await authInstance.post('/users/register', formData);
+      const { data } = await authInstance.post('users/register', formData);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -27,10 +27,10 @@ export const registration = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk(
-  'auth/apiLogoutUser',
+  'users/logout',
   async (_, thunkApi) => {
     try {
-      await authInstance.post('/auth/logout');
+      await authInstance.post('users/logout');
       clearToken();
 
       return;
@@ -44,7 +44,7 @@ export const signin = createAsyncThunk(
   'users/signin',
   async (formData, thunkApi) => {
     try {
-      const { data } = await authInstance.post('/users/login', formData);
+      const { data } = await authInstance.post('users/login', formData);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -61,7 +61,7 @@ export const currentUser = createAsyncThunk(
     if (!token) return thunkApi.rejectWithValue('You don’t have any token!');
     try {
       setToken(token);
-      const { data } = await authInstance.get('/users/current');
+      const { data } = await authInstance.get('users/current');
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

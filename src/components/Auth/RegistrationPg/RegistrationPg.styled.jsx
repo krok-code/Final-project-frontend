@@ -29,27 +29,29 @@ export const Input = styled.input`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   outline: none;
   transition: all 150ms ease;
+
   &:focus {
     outline: none;
   }
+
   &::placeholder {
     color: #fff;
   }
 
-  ${props =>
-    props.$error &&
-    `
+  &::after {
     color: #fc8181;
     border-color: #fc8181;
+
     &::placeholder {
       color: #fc8181;
     }
-  `}
+  }
 
   @media screen and (min-width: 375px) {
     width: 285px;
   }
   @media screen and (min-width: 768px) {
+    width: 306px;
   }
   @media screen and (min-width: 1440px) {
     width: 306px;

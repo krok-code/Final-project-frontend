@@ -34,12 +34,25 @@ const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, () => {
         return initialState;
       })
-      .addMatcher(isAnyOf(registration.pending, signin.pending), state => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addMatcher(
-        isAnyOf(registration.rejected, signin.rejected),
+        isAnyOf(
+          registration.pending,
+          signin.pending,
+          currentUser.pending,
+          logoutUser.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          registration.rejected,
+          signin.rejected,
+          currentUser.rejected,
+          logoutUser.rejected
+        ),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;

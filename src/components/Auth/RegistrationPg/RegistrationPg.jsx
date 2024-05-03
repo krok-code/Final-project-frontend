@@ -43,18 +43,18 @@ function Registration() {
           placeholder="Enter your name"
           id="name"
           {...register('name')}
-          $error={touched.name && errors.name}
+          error={touched.name && errors.name}
         />
-        {touched.name && errors.name && <Error>{errors.name}</Error>}
+        {errors.name && <Error>{errors.name.message}</Error>}
 
         <Input
           type="email"
           id="email"
           placeholder="Enter your email"
           {...register('email')}
-          $error={touched.email && errors.email}
+          error={touched.email && errors.email}
         />
-        {touched.email && errors.email && <Error>{errors.email}</Error>}
+        {errors.email && <Error>{errors.email.message}</Error>}
 
         <Wrap>
           <Input
@@ -62,11 +62,9 @@ function Registration() {
             id="password"
             placeholder="Create a password"
             {...register('password')}
-            $error={touched.password && errors.password}
+            error={touched.password && errors.password}
           />
-          {touched.password && errors.password && (
-            <Error>{errors.password}</Error>
-          )}
+          {errors.password && <Error>{errors.password.message}</Error>}
         </Wrap>
 
         <Button type="submit" disabled={!isValid}>
