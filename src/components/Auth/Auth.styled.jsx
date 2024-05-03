@@ -15,18 +15,17 @@ export const WelcomeWrapper = styled.div`
 `;
 
 export const Modal = styled.div`
-  border: 1px solid ${theme.colors.primaryBlack};
+  border: 1px solid var(--black-color);
   width: calc(100% - 84px);
   padding: 24px;
-  background: ${theme.colors.bgForm};
-  border-radius: ${theme.borderRadius.main};
+  background: var(--modal-background);
+  border-radius: 8px;
 
   @media (min-width: 375px) {
     width: 335px;
   }
 
   @media (min-width: 768px) {
-    border: 1px solid ${theme.colors.primaryBlack};
     padding: 40px;
     width: 424px;
   }
@@ -39,18 +38,18 @@ export const ModalNav = styled.div`
 `;
 
 export const ModalNavItem = styled(NavLink)`
-  font-weight: ${theme.fontWeights.medium};
-  font-size: ${theme.fontSizes.subtitle};
-  line-height: ${theme.lineHeights.main};
-  letter-spacing: ${theme.letterSpacing.small};
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: -0.02em;
   text-decoration: none;
-  color: ${theme.colors.secondaryGray};
+  color: rgba(255, 255, 255, 0.3);
   background: none;
   border: none;
-  transition: color ${theme.transition.normal};
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover,
   &.active {
-    color: ${theme.colors.primaryWhite};
+    color: var(--white-color);
   }
 `;

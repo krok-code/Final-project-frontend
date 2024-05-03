@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '../../assets/fonts/styles/theme';
 
 export const Wrap = styled.div`
   position: relative;
@@ -9,7 +8,7 @@ export const Wrap = styled.div`
     position: absolute;
     right: 10px;
     top: 60%;
-    transform: ${theme.transform.transformY};
+    transform: translateY(-50%);
     border: none;
     background-color: transparent;
     opacity: 0.4;
@@ -18,11 +17,14 @@ export const Wrap = styled.div`
 
 export const Input = styled.input`
   padding: 14px 18px;
-  font-size: ${theme.fontSizes.text};
-  letter-spacing: ${theme.letterSpacing.small};
-  color: ${theme.colors.primaryWhite};
-  border-radius: ${theme.borderRadius.main};
-  border: ${theme.border.darkTheme};
+  color: var(--white-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: 1px solid var(--input-color);
+  opacity: 0.4;
   background: #1f1f1f;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   outline: none;
@@ -31,17 +33,18 @@ export const Input = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${theme.colors.primaryWhite};
+    color: var(--white-color);
   }
 
   ${props =>
-    props.$error
-      ? {
-          color: theme.colors.secondaryRed,
-          borderColor: theme.colors.secondaryRed,
-          '&::placeholder': { color: theme.colors.secondaryRed },
-        }
-      : []}
+    props.$error &&
+    `
+    color: var(--error-color);
+    border-color: var(--error-color);
+    &::placeholder {
+      color: var(--error-color);
+    }
+  `}
   @media screen and (min-width: 320px) {
     width: 287px;
   }
@@ -54,42 +57,32 @@ export const Input = styled.input`
 `;
 
 export const Error = styled.p`
-  font-size: ${theme.fontSizes.info};
-  line-height: ${theme.lineHeights.info};
-  color: ${theme.colors.secondaryRed};
+  font-size: 12px;
+  line-height: normal;
+  color: var(--error-color);
 `;
 
 export const Button = styled.button`
   width: 100%;
-  color: ${theme.colors.primaryBlack};
+  color: var(--black-color);
   text-align: center;
   border: none;
   text-decoration: none;
   cursor: pointer;
-  font-size: ${theme.fontSizes.text};
-  font-weight: ${theme.fontWeights.normal};
-  letter-spacing: ${theme.letterSpacing.small};
-  background-color: ${theme.colors.primaryGreen};
-  border-radius: ${theme.borderRadius.main};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  background-color: #bedbb0;
+  border-radius: 8px;
   padding: 14px;
   &:hover {
-    transition: ${theme.transition.normal};
-    background-color: ${theme.colors.hoverGreen};
+    transition: opacity 200ms linear;
+    background-color: var(--accent-color);
   }
 `;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
-`;
-
-export const Text = styled.span`
-  font-size: ${theme.fontSizes.text};
-  line-height: ${theme.lineHeights.text};
-  color: ${theme.colors.primaryBlue};
-  text-decoration: none;
-  &:hover {
-    color: ${theme.colors.secondaryOrange};
-    transition: ${theme.transition.normal};
-  }
 `;
