@@ -1,6 +1,3 @@
-import WelcomePage from 'pages/WelcomePg/WelcomePg';
-import Registration from './RegistrationPg/RegistrationPg';
-
 export const App = () => {
   return (
     <div
@@ -12,10 +9,6 @@ export const App = () => {
         fontSize: 40,
         color: '#010101',
       }}
-    >
-      <WelcomePage />
-      {/* <Registration /> */}
-      {/* <AuthPage /> */}
-    </div>
+    ></div>
   );
 };

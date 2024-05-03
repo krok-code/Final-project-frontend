@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { theme } from '../../styles/theme';
+import { theme } from '../../assets/fonts/styles/theme';
 
 export const WelcomeWrapper = styled.div`
   height: 100vh;

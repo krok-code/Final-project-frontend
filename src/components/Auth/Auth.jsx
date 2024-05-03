@@ -1,8 +1,8 @@
 import { Outlet, useParams } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Modal, ModalNav, ModalNavItem, WelcomeWrapper } from './Auth.styled';
-import LogIn from 'components/LogInPg/LogInPg';
-import Registration from 'components/RegistrationPg/RegistrationPg';
+import LogIn from 'components/Auth/LogInPg/LogInPg';
+import Registration from 'components/Auth/RegistrationPg/RegistrationPg';
 
 function AuthPage() {
   const { id } = useParams();
