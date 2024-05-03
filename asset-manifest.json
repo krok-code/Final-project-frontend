@@ -1,20 +1,13 @@
 {
   "files": {
     "main.css": "/Final-project-frontend/static/css/main.b87514ff.css",
-    "main.js": "/Final-project-frontend/static/js/main.aa277f3b.js",
-    "static/media/welcome-desk-2x.png": "/Final-project-frontend/static/media/welcome-desk-2x.47352d931ddfe9011871.png",
-    "static/media/welcome-tab-2x.png": "/Final-project-frontend/static/media/welcome-tab-2x.47352d931ddfe9011871.png",
-    "static/media/welcome-mob-2x.png": "/Final-project-frontend/static/media/welcome-mob-2x.dbdef087e71e45db1268.png",
-    "static/media/welcome-desk-1x.png": "/Final-project-frontend/static/media/welcome-desk-1x.324d085f23796df69bd8.png",
-    "static/media/welcome-tab-1x.png": "/Final-project-frontend/static/media/welcome-tab-1x.324d085f23796df69bd8.png",
-    "static/media/welcome-mob-1x.png": "/Final-project-frontend/static/media/welcome-mob-1x.1b5cc85cb34c3cd6e85b.png",
-    "static/media/icons-sprite.svg": "/Final-project-frontend/static/media/icons-sprite.09a7050e2ffe6224614f0cb55eba69e9.svg",
+    "main.js": "/Final-project-frontend/static/js/main.a6de0436.js",
     "index.html": "/Final-project-frontend/index.html",
     "main.b87514ff.css.map": "/Final-project-frontend/static/css/main.b87514ff.css.map",
-    "main.aa277f3b.js.map": "/Final-project-frontend/static/js/main.aa277f3b.js.map"
+    "main.a6de0436.js.map": "/Final-project-frontend/static/js/main.a6de0436.js.map"
   },
   "entrypoints": [
     "static/css/main.b87514ff.css",
-    "static/js/main.aa277f3b.js"
+    "static/js/main.a6de0436.js"
   ]
 }
