@@ -1,4 +1,4 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import {
   Modal,
@@ -7,11 +7,11 @@ import {
   WelcomeWrapper,
   Wrap,
 } from './Auth.styled';
-import LogIn from 'components/Auth/LogInPg/LogInPg';
+// import LogIn from 'components/Auth/LogInPg/LogInPg';
 import Registration from 'components/Auth/RegistrationPg/RegistrationPg';
 
 function AuthPage() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   return (
     <Wrap>

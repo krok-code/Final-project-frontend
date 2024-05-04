@@ -59,9 +59,9 @@ function LogIn() {
           placeholder="Enter your email"
           autoComplete="off"
           {...register('email')}
-          $error={touched.email && errors.email}
+          error={touched.email && errors.email}
         />
-        {touched.email && errors.email && <Error>{errors.email}</Error>}
+        {errors.email && <Error>{errors.email.message}</Error>}
 
         <Wrap>
           <Input
@@ -71,11 +71,9 @@ function LogIn() {
             placeholder="Create a password"
             autoComplete="off"
             {...register('password')}
-            $error={touched.password && errors.password}
+            error={touched.password && errors.password}
           />
-          {touched.password && errors.password && (
-            <Error>{errors.password}</Error>
-          )}
+          {errors.password && <Error>{errors.password.message}</Error>}
           <button type="button" onClick={swapPassword}>
             {showPassword ? <Eye /> : <EyeSlash />}
           </button>
