@@ -1,18 +1,28 @@
-// import { Modal, CloseModalCross, FormUserSettings } from 'components';
-// import { modalNames } from 'constants/constants';
+import { CloseModalCross } from '../mainModal/CloseModal';
 
-// import { ModalContainer, ModalTitle, ModalHeader } from './SettingModal.styled';
+import { modalNames } from '../../constant/constant';
+import {
+  ModalContainer,
+  ModalTitle,
+  ModalHeader,
+} from './EditProfileModal.styled';
+import { Modal } from '../mainModal/MainModal';
+import EditProfile from 'components/EditProfile/EditProfile';
 
-// export const EditProfileModal = () => {
-//   return (
-//     <Modal modalId={modalNames.EDIT_PROFILE}>
-//       <ModalContainer>
-//         <ModalHeader>
-//           <ModalTitle>Edit profile</ModalTitle>
-//           <CloseModal />
-//         </ModalHeader>
-//         <FormUserSettings />
-//       </ModalContainer>
-//     </Modal>
-//   );
-// };
+const EditProfileModal = () => {
+  return (
+    // <Modal modalId={modalNames.EDIT_PROFILE}>
+    <>
+      <ModalContainer>
+        <ModalHeader>
+          <ModalTitle>Edit profile</ModalTitle>
+          <CloseModalCross />
+        </ModalHeader>
+        <EditProfile />
+      </ModalContainer>
+    </>
+    // </Modal>
+  );
+};
+
+export default EditProfileModal;

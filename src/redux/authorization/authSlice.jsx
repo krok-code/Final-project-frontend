@@ -1,9 +1,18 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { registration, signin, currentUser, logoutUser } from './authReducer';
+import {
+  registration,
+  signin,
+  currentUser,
+  logoutUser,
+  updateUser,
+  changeTheme,
+} from './authReducer';
 
 const initialState = {
   token: null,
   userData: null,
+  theme: null,
+  avatarURL: '',
   isLoggedIn: false,
   error: null,
   isLoading: false,
@@ -20,6 +29,19 @@ const authSlice = createSlice({
         state.userData = action.payload;
         state.token = action.payload.token;
       })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.userData = action.payload;
+        state.theme = action.payload;
+        state.avatarURL = action.payload;
+      })
+      .addCase(changeTheme.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.theme = action.payload;
+      })
+
       .addCase(signin.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
