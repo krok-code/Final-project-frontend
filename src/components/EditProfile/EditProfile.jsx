@@ -120,16 +120,14 @@ const EditProfile = () => {
         />
         {errors.email && <Error>{errors.email.message}</Error>}
 
-        <Wrap>
-          <Input
-            type="password"
-            id="password"
-            placeholder="Create a password"
-            {...register('password')}
-            error={touched.password && errors.password?.message}
-          />
-          {errors.password && <Error>{errors.password.message}</Error>}
-        </Wrap>
+        <Input
+          type="password"
+          id="password"
+          placeholder="Create a password"
+          {...register('password')}
+          error={touched.password && errors.password.message}
+        />
+        {errors.password && <Error>{errors.password.message}</Error>}
 
         <Button type="submit">Send</Button>
       </Form>

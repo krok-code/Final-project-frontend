@@ -22,3 +22,8 @@ export const registrationSchema = yup.object().shape({
     .min(8, 'Password must be at least 8 characters long')
     .required('Password is required'),
 });
+
+export const needHelpSchema = yup.object().shape({
+  email: yup.string().matches(emailRegexp, 'Email is not valid').required(),
+  message: yup.string().min(7).max(230).required('Comment is required'),
+});

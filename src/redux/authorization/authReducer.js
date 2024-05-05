@@ -92,3 +92,22 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const needHelp = createAsyncThunk(
+  'users/needHelp',
+  async (formData, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+    try {
+      setToken(persistedToken);
+      const res = await axios.post('users/feedback', formData);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
