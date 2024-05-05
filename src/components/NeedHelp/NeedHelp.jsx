@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { needHelp } from '../../redux/authorization/authReducer';
 
+
 const NeedHelp = () => {
   const dispatch = useDispatch();
   const {
@@ -26,7 +27,7 @@ const NeedHelp = () => {
     },
     resolver: yupResolver(needHelpSchema),
   });
-  const onLogout = async e => {};
+ 
   const onSubmit = formData => {
     console.log(formData);
     if (!formData.message) {
@@ -57,9 +58,10 @@ const NeedHelp = () => {
       />
       {errors.message && <Error>{errors.message.message}</Error>}
 
-      <Button type="submit" onBtnClick={onLogout}>
+      <Button type="submit">
         Send
       </Button>
+     
     </Form>
   );
 };
