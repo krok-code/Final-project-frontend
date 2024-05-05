@@ -4,7 +4,10 @@ import { useEffect } from 'react';
 import { selectModalActiveModal } from '../../redux/modal/selectors';
 import { closeModal } from '../../redux/modal/modalSlice';
 import { ModalBackdrop, ModalContent } from './MainModal.styled';
-const modalRoot = document.querySelector('#modal-root');
+
+const modalRoot = document.createElement('div');
+modalRoot.setAttribute('id', 'modal-root');
+document.body.appendChild(modalRoot);
 
 export const Modal = ({ modalId, children }) => {
   const dispatch = useDispatch();

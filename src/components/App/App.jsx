@@ -1,5 +1,7 @@
 import AuthPage from 'components/Auth/Auth';
-import LogIn from 'components/Auth/LogInPg/LogInPg';
+import EditProfileModal from '../EditProfileModal/EditProfileModal';
+
+import { Modal } from 'components/mainModal/MainModal';
 
 export const App = () => {
   return (
@@ -13,7 +15,9 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <AuthPage />
+      {/* <AuthPage /> */}
+      <EditProfileModal />
+      {/* <Modal /> */}
     </div>
   );
 };

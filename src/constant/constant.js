@@ -1,5 +1,5 @@
 export const modalNames = {
-  EDIT_PROFILE: 'settings',
+  EDIT_PROFILE: 'edit',
 };
 
 export const defaultAvatar = '';

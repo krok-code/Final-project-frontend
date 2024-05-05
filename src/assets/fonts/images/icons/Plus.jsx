@@ -1,4 +1,4 @@
-const Plus = ({ width, height, fillColor, strokeColor }) => {
+export const Plus = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
       width={width || '14px'}
