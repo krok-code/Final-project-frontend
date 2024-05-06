@@ -1,9 +1,5 @@
-import AuthPage from 'components/Auth/Auth';
-import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal';
-
-import { Modal } from 'components/mainModal/MainModal';
-import NeedHelp from 'components/NeedHelp/NeedHelp';
-import NeedHelpModal from 'components/Modals/NeedHelpModals/NeedHelpModal';
+import EditColumnModal from 'components/Modals/EditColumnModal/EditColumnModal';
+import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 
 export const App = () => {
   return (
@@ -20,7 +16,7 @@ export const App = () => {
       {/* <AuthPage /> */}
       {/* <EditProfileModal /> */}
       {/* <Modal /> */}
-      <NeedHelpModal />
+      <EditColumnModal />
     </div>
   );
 };

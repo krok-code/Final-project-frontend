@@ -12,7 +12,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { needHelp } from '../../redux/authorization/authReducer';
 
-
 const NeedHelp = () => {
   const dispatch = useDispatch();
   const {
@@ -27,7 +26,7 @@ const NeedHelp = () => {
     },
     resolver: yupResolver(needHelpSchema),
   });
- 
+
   const onSubmit = formData => {
     console.log(formData);
     if (!formData.message) {
@@ -45,7 +44,7 @@ const NeedHelp = () => {
         id="email"
         placeholder="Email address"
         {...register('email')}
-        error={touched.email && errors.email?.message}
+        error={touched.email && errors.email.message}
       />
       {errors.email && <Error>{errors.email.message}</Error>}
 
@@ -54,14 +53,11 @@ const NeedHelp = () => {
         id="message"
         placeholder="Comment"
         {...register('message', { required: true })}
-        error={touched.message && errors.message?.message}
+        error={touched.message && errors.message.message}
       />
       {errors.message && <Error>{errors.message.message}</Error>}
 
-      <Button type="submit">
-        Send
-      </Button>
-     
+      <Button type="submit">Send</Button>
     </Form>
   );
 };

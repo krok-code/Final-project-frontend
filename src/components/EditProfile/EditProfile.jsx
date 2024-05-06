@@ -9,11 +9,9 @@ import { registrationSchema } from 'components/validation/schema';
 import {
   Wrapper,
   UserButton,
-  Image,
   Icon,
   HiddenInput,
   Avatar,
-  AvatarImg,
 } from './EditProfile.styled.component';
 import {
   Form,
