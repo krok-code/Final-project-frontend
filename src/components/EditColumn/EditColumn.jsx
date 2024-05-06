@@ -7,8 +7,6 @@ import {
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
-import { Icon, UserButton, Form, Wrap } from './EditColumn.styled';
 
 const EditColumn = () => {
   const {
