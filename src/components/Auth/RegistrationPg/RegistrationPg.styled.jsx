@@ -94,3 +94,46 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 14px;
 `;
+export const TextInput = styled.input`
+  padding: 14px 19px 109px 18px;
+  color: #fff;
+  height: 49px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: 1px solid #bedbb0;
+  opacity: 0.4;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  outline: none;
+  transition: all 150ms ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #fff;
+  }
+
+  &::after {
+    color: #fc8181;
+    border-color: #fc8181;
+
+    &::placeholder {
+      color: #fc8181;
+    }
+  }
+
+  @media screen and (min-width: 375px) {
+    width: 285px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 306px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 306px;
+  }
+`;
