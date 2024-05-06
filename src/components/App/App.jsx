@@ -1,10 +1,3 @@
-import AuthPage from 'components/Auth/Auth';
-import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal';
-
-import { Modal } from 'components/mainModal/MainModal';
-import NeedHelp from 'components/NeedHelp/NeedHelp';
-import NeedHelpModal from 'components/Modals/NeedHelpModals/NeedHelpModal';
-
 export const App = () => {
   return (
     <div
@@ -16,11 +9,6 @@ export const App = () => {
         fontSize: 40,
         color: '#010101',
       }}
-    >
-      {/* <AuthPage /> */}
-      {/* <EditProfileModal /> */}
-      {/* <Modal /> */}
-      <NeedHelpModal />
-    </div>
+    ></div>
   );
 };
