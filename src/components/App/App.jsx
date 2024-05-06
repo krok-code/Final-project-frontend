@@ -1,7 +1,9 @@
 import AuthPage from 'components/Auth/Auth';
-import EditProfileModal from '../EditProfileModal/EditProfileModal';
+import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal';
 
 import { Modal } from 'components/mainModal/MainModal';
+import NeedHelp from 'components/NeedHelp/NeedHelp';
+import NeedHelpModal from 'components/Modals/NeedHelpModals/NeedHelpModal';
 
 export const App = () => {
   return (
@@ -16,8 +18,9 @@ export const App = () => {
       }}
     >
       {/* <AuthPage /> */}
-      <EditProfileModal />
+      {/* <EditProfileModal /> */}
       {/* <Modal /> */}
+      <NeedHelpModal />
     </div>
   );
 };
