@@ -21,6 +21,7 @@ function AuthPage() {
             <ModalNavItem to="/auth/register">Registration</ModalNavItem>
             <ModalNavItem to="/auth/login">Log In</ModalNavItem>
           </ModalNav>
+          {/* <LogIn /> */}
           <Registration />
           {/* {id === 'login' && <LogIn />}
         {id === 'register' && <Registration />} */}

@@ -3,6 +3,7 @@ import { editColumnSchema } from 'components/validation/schema';
 import {
   Input,
   Error,
+  Form,
 } from 'components/Auth/RegistrationPg/RegistrationPg.styled';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';

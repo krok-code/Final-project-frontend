@@ -3,7 +3,14 @@ import { useDispatch } from 'react-redux';
 import { registration } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
 import { registrationSchema } from '../../validation/schema';
-import { Wrap, Input, Button, Form, Error } from './RegistrationPg.styled';
+import {
+  Input,
+  Button,
+  Form,
+  Error,
+  Container,
+  Wrap,
+} from './RegistrationPg.styled';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 function Registration() {
@@ -36,26 +43,28 @@ function Registration() {
   };
 
   return (
-    <>
+    <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="text"
-          placeholder="Enter your name"
-          id="name"
-          {...register('name')}
-          error={touched.name && errors.name}
-        />
-        {errors.name && <Error>{errors.name.message}</Error>}
-
-        <Input
-          type="email"
-          id="email"
-          placeholder="Enter your email"
-          {...register('email')}
-          error={touched.email && errors.email}
-        />
-        {errors.email && <Error>{errors.email.message}</Error>}
-
+        <Wrap>
+          <Input
+            type="text"
+            placeholder="Enter your name"
+            id="name"
+            {...register('name')}
+            error={touched.name && errors.name}
+          />
+          {errors.name && <Error>{errors.name.message}</Error>}
+        </Wrap>
+        <Wrap>
+          <Input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            {...register('email')}
+            error={touched.email && errors.email}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </Wrap>
         <Wrap>
           <Input
             type="password"
@@ -66,12 +75,11 @@ function Registration() {
           />
           {errors.password && <Error>{errors.password.message}</Error>}
         </Wrap>
-
         <Button type="submit" disabled={!isValid}>
           Register Now
         </Button>
       </Form>
-    </>
+    </Container>
   );
 }
 
