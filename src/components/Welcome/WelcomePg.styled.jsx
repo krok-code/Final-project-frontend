@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
+  /* background: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%); */
+  background: var(--light-green-gradient);
 `;
 export const Container = styled.div`
   display: flex;
