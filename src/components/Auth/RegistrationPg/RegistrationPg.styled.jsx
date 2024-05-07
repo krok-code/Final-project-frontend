@@ -35,6 +35,9 @@ export const Input = styled.input`
   &:focus {
     outline: none;
   }
+  &:hover {
+    opacity: 1;
+  }
 
   &::placeholder {
     color: #fff;

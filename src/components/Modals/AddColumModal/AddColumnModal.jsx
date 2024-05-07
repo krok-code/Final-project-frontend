@@ -1,25 +1,25 @@
 // import { Modal } from '../../mainModal/MainModal';
 // import { modalNames } from '../../../constant/constant';
 import { CloseModalCross } from '../../mainModal/CloseModal';
-import EditColumn from '../../EditColumn/EditColumn';
 import {
   ModalContainer,
   ModalTitle,
   ModalHeader,
 } from '../EditProfileModal/EditProfileModal.styled';
-const EditColumnModal = () => {
+import AddColumn from 'components/AddColumn/AddColumn';
+const AddColumModal = () => {
   return (
-    // <Modal modalId={modalNames.EDIT_COLUMN}>
+    // <Modal modalId={modalNames.ADD_COLUMN}>
     <>
       <ModalContainer>
         <ModalHeader>
-          <ModalTitle>Edit column</ModalTitle>
+          <ModalTitle>Add column</ModalTitle>
           <CloseModalCross />
         </ModalHeader>
-        <EditColumn />
+        <AddColumn />
       </ModalContainer>
     </>
     // </Modal>
   );
 };
-export default EditColumnModal;
+export default AddColumModal;

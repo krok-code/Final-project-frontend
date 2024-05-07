@@ -19,13 +19,6 @@ export const Button = styled.button`
     transition: opacity 200ms linear;
     background-color: ${props => (props.approve ? '#9dc888' : '#121212')};
   }
-
-  @media screen and (min-width: 768px) {
-    width: 336px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 344px;
-  }
 `;
 
 export const IconWrapper = styled.div`
