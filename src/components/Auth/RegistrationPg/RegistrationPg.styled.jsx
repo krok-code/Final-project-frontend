@@ -10,12 +10,14 @@ export const Wrap = styled.div`
     top: 60%;
     transform: translateY(-50%);
     border: none;
+    cursor: pointer;
     background-color: transparent;
     opacity: 0.4;
   }
 `;
 
 export const Input = styled.input`
+  width: calc(100% - 20%);
   padding: 14px 18px;
   color: #fff;
   border-radius: 8px;
@@ -33,6 +35,9 @@ export const Input = styled.input`
   &:focus {
     outline: none;
   }
+  &:hover {
+    opacity: 1;
+  }
 
   &::placeholder {
     color: #fff;
@@ -46,15 +51,11 @@ export const Input = styled.input`
       color: #fc8181;
     }
   }
-
   @media screen and (min-width: 375px) {
-    width: 285px;
+    width: calc(100% - 10%);
   }
   @media screen and (min-width: 768px) {
-    width: 306px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 306px;
+    width: calc(100% - 10%);
   }
 `;
 
@@ -65,7 +66,7 @@ export const Error = styled.p`
 `;
 
 export const Button = styled.button`
-  width: 100%;
+  width: calc(100% + 10%);
   color: #161616;
   text-align: center;
   border: none;
@@ -82,10 +83,8 @@ export const Button = styled.button`
     transition: opacity 200ms linear;
     background-color: #9dc888;
   }
-  @media screen and (min-width: 768px) {
-    width: 336px;
-  }
-  @media screen and (min-width: 1440px) {
+
+  @media screen and (min-width: 375px) {
     width: 344px;
   }
 `;
@@ -93,6 +92,12 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
+`;
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
 `;
 export const TextInput = styled.input`
   padding: 14px 19px 109px 18px;

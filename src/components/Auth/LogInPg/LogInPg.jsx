@@ -29,6 +29,7 @@ function LogIn() {
     handleSubmit,
     formState: { errors, touched = {}, isValid },
     register,
+    reset,
   } = useForm({
     initialValues: {
       email: '',
@@ -47,22 +48,24 @@ function LogIn() {
       .catch(() => {
         toast.error('Please write a correct email or password!');
       });
+    reset();
   };
 
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          autoComplete="off"
-          {...register('email')}
-          error={touched.email && errors.email}
-        />
-        {errors.email && <Error>{errors.email.message}</Error>}
-
+        <Wrap>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autoComplete="off"
+            {...register('email')}
+            error={touched.email && errors.email}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </Wrap>
         <Wrap>
           <Input
             type={showPassword ? 'text' : 'password'}
