@@ -20,6 +20,7 @@ function Registration() {
     register,
     handleSubmit,
     formState: { errors, touched = {}, isValid },
+    reset,
   } = useForm({
     mode: 'onBlur', // Validate on blur
     defaultValues: {
@@ -40,6 +41,7 @@ function Registration() {
       .catch(() => {
         toast.error('Please write a correct email or password!');
       });
+    reset();
   };
 
   return (

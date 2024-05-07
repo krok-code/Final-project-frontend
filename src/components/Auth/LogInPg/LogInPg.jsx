@@ -29,6 +29,7 @@ function LogIn() {
     handleSubmit,
     formState: { errors, touched = {}, isValid },
     register,
+    reset,
   } = useForm({
     initialValues: {
       email: '',
@@ -47,6 +48,7 @@ function LogIn() {
       .catch(() => {
         toast.error('Please write a correct email or password!');
       });
+    reset();
   };
 
   return (
