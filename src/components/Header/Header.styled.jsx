@@ -6,7 +6,7 @@ export const HeaderSection = styled.header`
   justify-content: space-between;
   height: 60px;
   padding: 18px 20px;
-  background-color: #161616;
+  background-color: var(--header-color);
 
   @media screen and (min-width: 768px) {
     height: 68px;
@@ -25,7 +25,7 @@ export const BurgerBtn = styled.button`
 
   svg,
   path {
-    stroke: #fff;
+    stroke: var(--text-color);
 
     @media screen and (min-width: 768px) {
       width: 32px;
