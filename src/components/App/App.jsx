@@ -9,6 +9,8 @@ import { Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { refreshUser } from '../../redux/authorization/authReducer';
 import { selectIsRefreshing } from '../../redux/selectors';
+import { ThemeProvider } from 'styled-components';
+import { darkTheme } from '../../assets/theme/theme';
 
 const WelcomePage = lazy(() => import('pages/WelcomePg/WelcomePage'));
 // const HomePage = lazy(() => import('pages/Home/Home'));
@@ -26,37 +28,42 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
-      {isRefreshing ? (
-        <Loader />
-      ) : (
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <PublicRoute
-                  redirectTo="/welcome"
-                  component={<WelcomePage />}
-                />
-              }
-            />
-            {/* <Route
+      {' '}
+      <ThemeProvider theme={darkTheme}>
+        {isRefreshing ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <PublicRoute
+                    redirectTo="/welcome"
+                    component={<WelcomePage />}
+                  />
+                }
+              />
+              {/* <Route
             path="/home"
             element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
           >
             {' '}
             <Route path=":boardName" element={<ScreenPage />} />
           </Route> */}
-            <Route
-              path="auth/:id"
-              element={<PublicRoute redirectTo="/" component={<AuthPage />} />}
-            >
-              <Route path="login" element={<LogIn />} />
-              <Route path="registration" element={<Registration />} />
+              <Route
+                path="auth/:id"
+                element={
+                  <PublicRoute redirectTo="/" component={<AuthPage />} />
+                }
+              >
+                <Route path="login" element={<LogIn />} />
+                <Route path="registration" element={<Registration />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      )}
+          </Routes>
+        )}
+      </ThemeProvider>
     </>
   );
 };
