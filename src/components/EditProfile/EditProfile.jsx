@@ -16,12 +16,15 @@ import {
 import {
   Form,
   Button,
-  Wrap,
   Input,
   Error,
+  Wrap,
 } from 'components/Auth/RegistrationPg/RegistrationPg.styled';
 import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
 import { toast } from 'react-toastify';
+import { Container } from 'components/Auth/RegistrationPg/RegistrationPg.styled';
+import { Eye } from 'assets/fonts/images/icons/Eye';
+import { EyeSlash } from 'assets/fonts/images/icons/EyeCrossed';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,10 @@ const EditProfile = () => {
   const theme = useSelector(state => state.theme);
   const [fileImage, setFileImage] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(avatarURL);
+  const [showPassword, setShowPassword] = useState(false);
+  const swapPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const {
     register,
@@ -78,7 +85,7 @@ const EditProfile = () => {
   };
 
   return (
-    <>
+    <Container>
       <Wrapper>
         <Avatar
           src={selectedAvatar || (theme === 'dark' ? userLight : userDark)}
@@ -100,36 +107,45 @@ const EditProfile = () => {
         </UserButton>
       </Wrapper>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="text"
-          placeholder="Enter your name"
-          id="name"
-          {...register('name')}
-          error={touched.name && errors.name?.message}
-        />
-        {errors.name && <Error>{errors.name.message}</Error>}
-
-        <Input
-          type="email"
-          id="email"
-          placeholder="Enter your email"
-          {...register('email')}
-          error={touched.email && errors.email?.message}
-        />
-        {errors.email && <Error>{errors.email.message}</Error>}
-
-        <Input
-          type="password"
-          id="password"
-          placeholder="Create a password"
-          {...register('password')}
-          error={touched.password && errors.password.message}
-        />
-        {errors.password && <Error>{errors.password.message}</Error>}
+        <Wrap>
+          <Input
+            type="text"
+            placeholder="Enter your name"
+            id="name"
+            {...register('name')}
+            error={touched.name && errors.name?.message}
+          />
+          {errors.name && <Error>{errors.name.message}</Error>}
+        </Wrap>
+        <Wrap>
+          <Input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            {...register('email')}
+            error={touched.email && errors.email?.message}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </Wrap>
+        <Wrap>
+          <Input
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            name="password"
+            placeholder="Create a password"
+            autoComplete="off"
+            {...register('password')}
+            error={touched.password && errors.password}
+          />
+          {errors.password && <Error>{errors.password.message}</Error>}
+          <button type="button" onClick={swapPassword}>
+            {showPassword ? <Eye /> : <EyeSlash />}
+          </button>
+        </Wrap>
 
         <Button type="submit">Send</Button>
       </Form>
-    </>
+    </Container>
   );
 };
 

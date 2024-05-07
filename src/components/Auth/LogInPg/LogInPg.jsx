@@ -52,17 +52,18 @@ function LogIn() {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          autoComplete="off"
-          {...register('email')}
-          error={touched.email && errors.email}
-        />
-        {errors.email && <Error>{errors.email.message}</Error>}
-
+        <Wrap>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autoComplete="off"
+            {...register('email')}
+            error={touched.email && errors.email}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </Wrap>
         <Wrap>
           <Input
             type={showPassword ? 'text' : 'password'}
