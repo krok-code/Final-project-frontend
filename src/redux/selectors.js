@@ -5,3 +5,4 @@ export const selectToken = state => state.users.token;
 export const selectUserData = state => state.users.userData;
 export const selectColumns = state => state.boards.columns;
 export const selectIsRefreshing = state => state.isRefreshing;
+export const selectTheme = state => state.theme;

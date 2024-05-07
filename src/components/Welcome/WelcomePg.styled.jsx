@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { darkTheme } from '../../assets/theme/theme';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   /* background: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%); */
-  background: var(--light-green-gradient);
+  background: ${darkTheme.dark.colors.background};
 `;
 export const Container = styled.div`
   display: flex;
