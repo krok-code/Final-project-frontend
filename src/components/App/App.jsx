@@ -1,6 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import Loader from 'components/Loader/Loader';
-// import PrivateRoute from 'components/Routes/PrivateRoute';
+import PrivateRoute from 'components/Routes/PrivateRoute';
 import PublicRoute from 'components/Routes/PublicRoute';
 
 import { lazy, useEffect } from 'react';
@@ -11,7 +11,8 @@ import { refreshUser } from '../../redux/authorization/authReducer';
 import { selectIsRefreshing } from '../../redux/selectors';
 
 const WelcomePage = lazy(() => import('pages/WelcomePg/WelcomePage'));
-// const HomePage = lazy(() => import('pages/Home/Home'));
+const HomePage = lazy(() => import('pages/Home/Home'));
+const ScreensPagePage = lazy(() => import('pages/ScreensPage/ScreensPage'));
 const AuthPage = lazy(() => import('components/Auth/Auth'));
 const LogIn = lazy(() => import('components/Auth/LogInPg/LogInPg'));
 const Registration = lazy(() =>
@@ -40,13 +41,13 @@ export const App = () => {
                 />
               }
             />
-            {/* <Route
+            <Route
             path="/home"
             element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
           >
             {' '}
-            <Route path=":boardName" element={<ScreenPage />} />
-          </Route> */}
+            <Route path=":boardName" element={<ScreensPagePage />} />
+          </Route>
             <Route
               path="auth/:id"
               element={<PublicRoute redirectTo="/" component={<AuthPage />} />}
