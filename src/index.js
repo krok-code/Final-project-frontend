@@ -4,7 +4,7 @@ import { App } from 'components/App/App';
 import './index.css';
 import { Provider } from 'react-redux';
 import { persistor } from './redux/store';
-
+import 'modern-normalize';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store } from './redux/store';
 import { ToastContainer } from 'react-toastify';
