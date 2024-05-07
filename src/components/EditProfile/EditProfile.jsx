@@ -41,6 +41,7 @@ const EditProfile = () => {
     register,
     handleSubmit,
     formState: { errors, touched = {} },
+    reset,
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -82,6 +83,7 @@ const EditProfile = () => {
 
     dispatch(updateUser(formData));
     console.log(formData);
+    reset();
   };
 
   return (

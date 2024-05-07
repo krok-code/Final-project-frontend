@@ -17,6 +17,7 @@ const EditColumn = ({ text, columnId }) => {
     register,
     handleSubmit,
     formState: { errors, touched = {} },
+    reset,
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -28,6 +29,7 @@ const EditColumn = ({ text, columnId }) => {
 
   const onSubmit = () => {
     dispatch(editColumn(text, columnId));
+    reset();
   };
 
   return (

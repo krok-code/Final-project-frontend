@@ -111,3 +111,20 @@ export const needHelp = createAsyncThunk(
     }
   }
 );
+
+export const refreshUser = createAsyncThunk(
+  'users/refreshUser',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.users.token;
+    if (!token) return thunkApi.rejectWithValue('You don’t have any token!');
+    try {
+      setToken(token);
+      const { data } = await authInstance.get('/users/current');
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

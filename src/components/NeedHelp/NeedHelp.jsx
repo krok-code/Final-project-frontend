@@ -18,6 +18,7 @@ const NeedHelp = () => {
     register,
     handleSubmit,
     formState: { errors, touched = {} },
+    reset,
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -35,6 +36,7 @@ const NeedHelp = () => {
     }
 
     dispatch(needHelp(formData));
+    reset();
   };
 
   return (

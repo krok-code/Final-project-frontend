@@ -19,6 +19,7 @@ const AddColumn = ({ text, boardId }) => {
     register,
     handleSubmit,
     formState: { errors, touched = {} },
+    reset,
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -41,6 +42,7 @@ const AddColumn = ({ text, boardId }) => {
     dispatch(addColumn({ boardId, text: data.text }));
     console.log({ text });
     // }
+    reset();
   };
 
   return (
