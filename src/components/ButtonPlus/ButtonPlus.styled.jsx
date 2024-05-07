@@ -11,13 +11,19 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-  background-color: ${props => (props.approve ? '#BEDBB0' : '#121212')};
+  background-color: ${props =>
+    props.approve
+      ? props.theme.colors.inputColor
+      : props.theme.colors.blackColor};
   border-radius: 8px;
   padding: 14px;
 
   &:hover {
     transition: opacity 200ms linear;
-    background-color: ${props => (props.approve ? '#9dc888' : '#121212')};
+    background-color: ${props =>
+      props.approve
+        ? props.theme.colors.accentColor
+        : props.theme.colors.blackColor};
   }
 `;
 
@@ -28,7 +34,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: #121212; /* Замініть на потрібний вам колір */
+  background-color: ${props => props.theme.colors.blackColor};
   transition: all 250ms linear;
   cursor: pointer;
 
@@ -45,11 +51,11 @@ export const Wrap = styled.div`
 export const Icon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: #fff; /* Замініть на потрібний вам колір */
+  stroke: ${props => props.theme.colors.whiteColor};
 `;
 
 export const Text = styled.p`
-  color: #121212;
+  color: ${props => props.theme.colors.blackColor};
   font-size: 14px;
   font-family: 'Poppins';
   font-style: normal;

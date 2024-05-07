@@ -35,7 +35,7 @@ export const UserButton = styled.button`
   width: 28px;
   height: 28px;
   border: none;
-  background-color: rgba(190, 219, 176, 1);
+  background-color: ${props => props.theme.colors.inputColor};
 
   transition: all 150ms linear;
   cursor: pointer;
@@ -53,7 +53,7 @@ export const Image = styled.img`
 export const Icon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: rgba(22, 22, 22, 1);
+  stroke: ${props => props.theme.colors.blackColor};
 `;
 export const HiddenInput = styled.input`
   display: none;
