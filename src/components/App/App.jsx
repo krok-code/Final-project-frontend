@@ -1,6 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import Loader from 'components/Loader/Loader';
-// import PrivateRoute from 'components/Routes/PrivateRoute';
+import PrivateRoute from 'components/Routes/PrivateRoute';
 import PublicRoute from 'components/Routes/PublicRoute';
 
 import { lazy, useEffect } from 'react';
@@ -13,7 +13,8 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from '../../assets/theme/theme';
 
 const WelcomePage = lazy(() => import('pages/WelcomePg/WelcomePage'));
-// const HomePage = lazy(() => import('pages/Home/Home'));
+const HomePage = lazy(() => import('pages/Home/Home'));
+const ScreensPage = lazy(() => import('pages/ScreensPage/ScreensPage'));
 const AuthPage = lazy(() => import('components/Auth/Auth'));
 const LogIn = lazy(() => import('components/Auth/LogInPg/LogInPg'));
 const Registration = lazy(() =>
@@ -41,13 +42,13 @@ export const App = () => {
                   <PublicRoute redirectTo="/home" component={<WelcomePage />} />
                 }
               />
-              {/* <Route
+              <Route
             path="/home"
             element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
           >
             {' '}
-            <Route path=":boardName" element={<ScreenPage />} />
-          </Route> */}
+            <Route path=":boardName" element={<ScreensPage />} />
+          </Route>
               <Route
                 path="auth/:id"
                 element={
