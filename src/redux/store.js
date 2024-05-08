@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import { authReducer } from './authorization/authSlice';
 import storage from 'redux-persist/lib/storage';
+import { cardshReducer } from './cards/cardsSlice';
 
 const authConfig = {
   key: 'auth',
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
     modal: modalReducer,
+    boads: cardshReducer,
   },
 
   middleware: getDefaultMiddleware =>

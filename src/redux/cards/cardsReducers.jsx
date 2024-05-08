@@ -41,13 +41,12 @@ export const editColumn = createAsyncThunk(
 );
 export const addBoard = createAsyncThunk(
   'addBoard',
-  async ({ name, icon, backgroundURL, owner }, thunkAPI) => {
+  async ({ name, icon, backgroundURL }, thunkAPI) => {
     try {
       const { data } = await authInstance.post('/board', {
         name,
         icon,
         backgroundURL,
-        owner,
       });
 
       return data;
