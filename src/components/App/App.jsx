@@ -38,10 +38,7 @@ export const App = () => {
               <Route
                 index
                 element={
-                  <PublicRoute
-                    redirectTo="/welcome"
-                    component={<WelcomePage />}
-                  />
+                  <PublicRoute redirectTo="/home" component={<WelcomePage />} />
                 }
               />
               {/* <Route

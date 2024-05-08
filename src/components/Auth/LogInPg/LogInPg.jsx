@@ -9,13 +9,7 @@ import { signin } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import {
-  Wrap,
-  Input,
-  Button,
-  Form,
-  Error,
-} from '../RegistrationPg/RegistrationPg.styled';
+import { Wrap, Input, Button, Form, Error } from './LoginPg.styled';
 
 function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
