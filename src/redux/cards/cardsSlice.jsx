@@ -26,6 +26,28 @@ const boardsSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
+      .addCase(addBoard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.boards.push(action.payload);
+      })
+      .addCase(editBoard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const { _id, name, icon, backgroundURL } = action.payload;
+
+        const boardIndex = state.oards.findIndex(item => item._id === _id);
+
+        state.boards[boardIndex] = {
+          ...state.boards[boardIndex],
+          name,
+          icon,
+          backgroundURL,
+        };
+        state.currentName = name;
+        state.currentBg = backgroundURL;
+      })
+
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
@@ -40,12 +62,25 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addMatcher(isAnyOf(addColumn.pending, editColumn.pending), state => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addMatcher(
-        isAnyOf(addColumn.rejected, editColumn.rejected),
+        isAnyOf(
+          addColumn.pending,
+          editColumn.pending,
+          addBoard.pending,
+          editBoard.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          addColumn.rejected,
+          editColumn.rejected,
+          addBoard.rejected,
+          editBoard.rejected
+        ),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;

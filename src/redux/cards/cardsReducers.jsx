@@ -39,3 +39,32 @@ export const editColumn = createAsyncThunk(
     }
   }
 );
+export const addBoard = createAsyncThunk(
+  'addBoard',
+  async ({ name, icon, backgroundURL, owner }, thunkAPI) => {
+    try {
+      const { data } = await authInstance.post('/board', {
+        name,
+        icon,
+        backgroundURL,
+        owner,
+      });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const editBoard = createAsyncThunk(
+  'editBoard',
+  async ({ boardId, updatedData }, thunkAPI) => {
+    try {
+      const { data } = await authInstance.put(`board/${boardId}`, updatedData);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

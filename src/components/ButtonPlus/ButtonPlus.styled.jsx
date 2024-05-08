@@ -16,7 +16,6 @@ export const Button = styled.button`
       ? props.theme.colors.inputColor
       : props.theme.colors.blackColor};
   border-radius: 8px;
-  padding: 14px;
 
   &:hover {
     transition: opacity 200ms linear;
