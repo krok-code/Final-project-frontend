@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 const { addColumn, editColumn } = require('./cardsReducers');
 
 const initialState = {
