@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import '../../shared/basicStyles/variables.scss';
 
 export const FormStyled = styled.form`
   padding-top: 14px;
-  border-top: 1px solid var(--modal-filter-form-line);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 export const BoxStyled = styled.div`
@@ -16,7 +15,7 @@ export const BoxStyled = styled.div`
 
 export const SubtitleStyled = styled.p`
   letter-spacing: -0.28px;
-  color: var(--modal-filters-text);
+  color: #ffffff;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 500;
