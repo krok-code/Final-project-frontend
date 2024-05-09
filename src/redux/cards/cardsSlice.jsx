@@ -20,6 +20,7 @@ const initialState = {
   ],
   currentColumnId: null,
   currentCardId: null,
+  currentBoardId: null,
   isDeadlineToday: false,
   isLoggedIn: false,
   error: null,

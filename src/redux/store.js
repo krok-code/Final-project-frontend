@@ -11,7 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from './authorization/authSlice';
+import { authReducer } from '../redux/authorization/authSlice';
 import storage from 'redux-persist/lib/storage';
 import { cardshReducer } from './cards/cardsSlice';
 
@@ -20,12 +20,12 @@ const authConfig = {
   storage,
   whitelist: ['token'],
 };
-
+const persistedAuthReducer = persistReducer(authConfig, authReducer);
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authConfig, authReducer),
+    auth: persistedAuthReducer,
     modal: modalReducer,
-    boads: cardshReducer,
+    boards: cardshReducer,
   },
 
   middleware: getDefaultMiddleware =>

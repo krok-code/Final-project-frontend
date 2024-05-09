@@ -18,7 +18,6 @@ const initialState = {
   isLoggedIn: false,
   error: null,
   isLoading: false,
-  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -64,23 +63,18 @@ const authSlice = createSlice({
         return initialState;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.userData = action.payload.user;
+        state.userData = action.payload;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
       })
-      .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
-      })
-      .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
-      })
+
       .addMatcher(
         isAnyOf(
           registration.pending,
           signin.pending,
           currentUser.pending,
           logoutUser.pending,
-          needHelp.pending
+          needHelp.pending,
+          refreshUser.pending
         ),
         state => {
           state.isLoading = true;
@@ -93,7 +87,8 @@ const authSlice = createSlice({
           signin.rejected,
           currentUser.rejected,
           logoutUser.rejected,
-          needHelp.rejected
+          needHelp.rejected,
+          refreshUser.rejected
         ),
         (state, action) => {
           state.isLoading = false;
