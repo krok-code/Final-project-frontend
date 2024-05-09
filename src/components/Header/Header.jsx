@@ -1,5 +1,5 @@
 import Burger from 'assets/fonts/images/icons/Burger';
-import EditProfile from 'components/EditProfile/EditProfile';
+import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 import { HeaderSection, BurgerBtn, HeaderUserWrap } from './Header.styled';
 
 const Header = ({ openMenu }) => {
@@ -10,7 +10,7 @@ const Header = ({ openMenu }) => {
       </BurgerBtn>
 
       <HeaderUserWrap>
-        <EditProfile />
+        <EditProfileModal />
       </HeaderUserWrap>
     </HeaderSection>
   );
