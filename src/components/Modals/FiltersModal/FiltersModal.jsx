@@ -1,26 +1,31 @@
 // import { Modal } from '../../mainModal/MainModal';
 // import { modalNames } from '../../../constant/constant';
+import RadioFilters from 'shared/components/radioButtons/RadioFilters';
 import { CloseModalCross } from '../../mainModal/CloseModal';
-import {
-  ModalTitle,
-  ModalHeader,
-} from '../EditProfileModal/EditProfileModal.styled';
-import { FiltersModalContainer } from './FiltersModal.styled';
-//import Filters from 'components/Filters/Filters';
+import { ModalTitle } from '../EditProfileModal/EditProfileModal.styled';
+import { FormStyled, BoxStyled, SubtitleStyled } from './FiltersModal.styled';
 
-const FiltersModal = () => {
+const FiltersModal = ({ onClose, onClick }) => {
+  let priority = '';
   return (
-    // <Modal modalId={modalNames.FILTERS}>
+    //<Modal modalId={modalNames.FILTER_MODAL}>
     <>
-      <FiltersModalContainer>
-        <ModalHeader>
-          <ModalTitle>Filters</ModalTitle>
-          <CloseModalCross />
-        </ModalHeader>
-  
-      </FiltersModalContainer>
+      <ModalTitle>Filters</ModalTitle>
+      <CloseModalCross />
+      <FormStyled>
+        <BoxStyled>
+          <SubtitleStyled>Label color</SubtitleStyled>
+        </BoxStyled>
+        <RadioFilters
+          onFilterChange={() => priority}
+          onModalClose={onClose}
+          onClick={onClick}
+        />
+      </FormStyled>
     </>
-    // </Modal>
+
+    //</Modal>
   );
 };
+
 export default FiltersModal;
