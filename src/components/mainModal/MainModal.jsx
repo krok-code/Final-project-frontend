@@ -34,7 +34,7 @@ export const Modal = ({ modalId, children }) => {
   return createPortal(
     activeModal === modalId ? (
       <ModalBackdrop onClick={closeModalOnBackdrop}>
-        <ModalContent>{children}hel</ModalContent>
+        <ModalContent>{children}</ModalContent>
       </ModalBackdrop>
     ) : null,
     modalRoot
