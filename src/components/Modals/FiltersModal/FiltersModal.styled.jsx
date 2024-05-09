@@ -1,12 +1,23 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-export const FiltersModalContainer = styled.div`
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.priorityGreen};
-  width: 300px;
-  height: 234px;
+export const FormStyled = styled.form`
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+`;
 
-  background: ${props => props.theme.colors.modalBackground};
-  padding: 24px;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+export const BoxStyled = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+`;
+
+export const SubtitleStyled = styled.p`
+  letter-spacing: -0.28px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
 `;
