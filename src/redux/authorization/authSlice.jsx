@@ -7,6 +7,7 @@ import {
   updateUser,
   changeTheme,
   needHelp,
+  refreshUser,
 } from './authReducer';
 
 const initialState = {
@@ -61,13 +62,19 @@ const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, () => {
         return initialState;
       })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.isLoggedIn = true;
+      })
+
       .addMatcher(
         isAnyOf(
           registration.pending,
           signin.pending,
           currentUser.pending,
           logoutUser.pending,
-          needHelp.pending
+          needHelp.pending,
+          refreshUser.pending
         ),
         state => {
           state.isLoading = true;
@@ -80,7 +87,8 @@ const authSlice = createSlice({
           signin.rejected,
           currentUser.rejected,
           logoutUser.rejected,
-          needHelp.rejected
+          needHelp.rejected,
+          refreshUser.rejected
         ),
         (state, action) => {
           state.isLoading = false;

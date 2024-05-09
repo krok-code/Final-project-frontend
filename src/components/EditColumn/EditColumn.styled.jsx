@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Icon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: #fff;
+  stroke: ${props => props.theme.colors.whiteColor};
 `;
 export const Form = styled.form`
   display: flex;
@@ -24,7 +24,7 @@ export const UserButton = styled.button`
   width: 28px;
   height: 28px;
   border: none;
-  background-color: #161616;
+  background-color: ${props => props.theme.colors.blackColor};
 
   transition: all 150ms linear;
   cursor: pointer;

@@ -96,18 +96,28 @@ export const updateUser = createAsyncThunk(
 export const needHelp = createAsyncThunk(
   'users/needHelp',
   async (formData, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
     try {
-      setToken(persistedToken);
-      const res = await axios.post('users/feedback', formData);
-      return res.data;
+      const { data } = await axios.post('users/feedback', formData);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'users/refreshUser',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+    if (!token) return thunkApi.rejectWithValue('You don’t have any token!');
+    try {
+      setToken(token);
+      const { data } = await authInstance.get('/users/current');
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

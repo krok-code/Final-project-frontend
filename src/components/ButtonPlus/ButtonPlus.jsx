@@ -3,7 +3,7 @@ import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
 
 const ButtonPlus = ({ text, approve }) => {
   return (
-    <Button type="button" approve={approve}>
+    <Button type="submit" $approve={approve}>
       <Wrap>
         <IconWrapper>
           <Icon>

@@ -9,13 +9,7 @@ import { signin } from '../../../redux/authorization/authReducer';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import {
-  Wrap,
-  Input,
-  Button,
-  Form,
-  Error,
-} from '../RegistrationPg/RegistrationPg.styled';
+import { Wrap, Input, Button, Form, Error } from './LoginPg.styled';
 
 function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +23,7 @@ function LogIn() {
     handleSubmit,
     formState: { errors, touched = {}, isValid },
     register,
+    reset,
   } = useForm({
     initialValues: {
       email: '',
@@ -47,6 +42,7 @@ function LogIn() {
       .catch(() => {
         toast.error('Please write a correct email or password!');
       });
+    reset();
   };
 
   return (
