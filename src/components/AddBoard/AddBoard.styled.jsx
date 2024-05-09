@@ -47,6 +47,7 @@ export const Icon = styled.svg`
   &.active {
     scale: 1.3;
     transform: rotate(360deg);
+    stroke: ${props => props.theme.colors.whiteColor};
   }
 
   &:focus {
@@ -73,8 +74,7 @@ export const CustomRadioBtn = styled.div`
   border-radius: 8px;
   width: 28px;
   height: 28px;
-
-  background-image: url(${props => props.url});
+  background-image: url(${props => props.$url});
   background-position: center;
   background-size: cover;
 

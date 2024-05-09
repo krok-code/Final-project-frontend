@@ -41,7 +41,7 @@ const boardsSlice = createSlice({
         state.error = null;
         const { _id, name, icon, backgroundURL } = action.payload;
 
-        const boardIndex = state.oards.findIndex(item => item._id === _id);
+        const boardIndex = state.boards.findIndex(item => item._id === _id);
 
         state.boards[boardIndex] = {
           ...state.boards[boardIndex],

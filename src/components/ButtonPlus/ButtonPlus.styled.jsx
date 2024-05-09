@@ -12,7 +12,7 @@ export const Button = styled.button`
   line-height: normal;
   letter-spacing: -0.28px;
   background-color: ${props =>
-    props.approve
+    props.$approve
       ? props.theme.colors.inputColor
       : props.theme.colors.blackColor};
   border-radius: 8px;
@@ -20,7 +20,7 @@ export const Button = styled.button`
   &:hover {
     transition: opacity 200ms linear;
     background-color: ${props =>
-      props.approve
+      props.$approve
         ? props.theme.colors.accentColor
         : props.theme.colors.blackColor};
   }
