@@ -48,6 +48,7 @@ const EditProfile = () => {
       name: '',
       email: '',
       password: '',
+      avatarURL: '',
     },
     resolver: yupResolver(registrationSchema),
   });
@@ -73,10 +74,8 @@ const EditProfile = () => {
   };
 
   const onSubmit = data => {
-    if (fileImage) {
-      data.append('image', fileImage);
-    }
-
+    // Додати avatarURL до об'єкту data
+    data.avatarURL = selectedAvatar;
     dispatch(updateUser(data));
     console.log(data);
     reset();

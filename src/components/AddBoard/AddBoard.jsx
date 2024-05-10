@@ -46,6 +46,11 @@ const AddBoard = () => {
     reset,
   } = useForm({
     mode: 'onBlur',
+    defaultValues: {
+      text: '',
+      backgroundURL: bgdImg,
+      icon: icons,
+    },
     resolver: yupResolver(editColumnSchema),
   });
 

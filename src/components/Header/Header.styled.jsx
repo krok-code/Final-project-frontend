@@ -148,7 +148,7 @@ export const HeaderSection = styled.header`
   height: 60px;
   padding: 18px 20px;
   background-color: #161616;
-
+  color: #fff;
   @media screen and (min-width: 768px) {
     height: 68px;
     padding-left: 32px;

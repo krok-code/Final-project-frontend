@@ -84,7 +84,7 @@ export const updateUser = createAsyncThunk(
   'users/profile',
   async (formData, thunkAPI) => {
     try {
-      const { data } = await authInstance.patch('users/profile', formData);
+      const { data } = await authInstance.put('users/update', formData);
 
       return data;
     } catch (error) {

@@ -12,9 +12,13 @@ import {
 
 const initialState = {
   token: null,
-  userData: null,
-  theme: null,
-  avatarURL: '',
+  userData: {
+    name: null,
+    email: null,
+    theme: null,
+    avatarURL: '',
+  },
+
   isLoggedIn: false,
   error: null,
   isLoading: false,
@@ -32,11 +36,12 @@ const authSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
+        const { name, email, password, avatarURL } = action.payload;
+        state.userData.name = name;
+        state.userData.email = email;
+        state.userData.password = password;
+        state.userData.avatarURL = avatarURL;
         state.isLoading = false;
-        state.isLoggedIn = true;
-        state.userData = action.payload;
-        state.theme = action.payload;
-        state.avatarURL = action.payload;
       })
       .addCase(needHelp.fulfilled, (state, action) => {
         state.isLoading = false;
