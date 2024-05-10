@@ -11,7 +11,11 @@ const {
 
 const initialState = {
   boards: [],
-  currentDashboard: {},
+  columns: [],
+  columnId: null,
+  currentBoardId: null,
+  cards: [],
+  cardId: null,
   isLoading: false,
   error: null,
   columnsLength: 0,
@@ -33,7 +37,8 @@ const boardsSlice = createSlice({
       .addCase(createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.boards.push(action.payload);
+        state.currentDashboardId = action.payload._id;
+        state.boards.push(...action.payload);
       })
       .addCase(deleteDashboard.fulfilled, (state, action) => {
         state.isLoading = false;

@@ -1,7 +1,8 @@
 // import { useState } from 'react';
 // import { Outlet, useLocation } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
-
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useTheme } from '@mui/material';
 import Header from '../Header/Header';
 // import ScreensPage from '../../components/ScreensPage/ScreensPage';
@@ -51,6 +52,9 @@ const HomePage = () => {
       <HomePageContainer>
         <MainContainer>
           <Header /> <Board />
+          <Suspense fallback={<div>Loading....</div>}>
+            <Outlet />
+          </Suspense>
         </MainContainer>
       </HomePageContainer>
     </ThemeProvider>
