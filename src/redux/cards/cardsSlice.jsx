@@ -2,7 +2,7 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 const {
   addColumn,
   editColumn,
-  addBoard,
+  createBoard,
   editBoard,
   getAllDashboards,
   deleteDashboard,
@@ -30,7 +30,7 @@ const boardsSlice = createSlice({
         state.boards = action.payload;
         state.error = null;
       })
-      .addCase(addBoard.fulfilled, (state, action) => {
+      .addCase(createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.boards.push(action.payload);
@@ -89,7 +89,7 @@ const boardsSlice = createSlice({
         isAnyOf(
           addColumn.pending,
           editColumn.pending,
-          addBoard.pending,
+          createBoard.pending,
           editBoard.pending,
           getAllDashboards.pending,
           deleteDashboard.pending,
@@ -104,7 +104,7 @@ const boardsSlice = createSlice({
         isAnyOf(
           addColumn.rejected,
           editColumn.rejected,
-          addBoard.rejected,
+          createBoard.rejected,
           editBoard.rejected,
           getAllDashboards.rejected,
           deleteDashboard.rejected,
@@ -116,4 +116,4 @@ const boardsSlice = createSlice({
         }
       ),
 });
-export const cardshReducer = boardsSlice.reducer;
+export const boardsReducer = boardsSlice.reducer;

@@ -28,8 +28,8 @@ import { EyeSlash } from 'assets/fonts/images/icons/EyeCrossed';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
-  const avatarURL = useSelector(state => state.avatarURL);
-  const theme = useSelector(state => state.theme);
+  const avatarURL = useSelector(state => state.auth.avatarURL);
+  const theme = useSelector(state => state.auth.theme);
   const [fileImage, setFileImage] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(avatarURL);
   const [showPassword, setShowPassword] = useState(false);
@@ -48,12 +48,17 @@ const EditProfile = () => {
       name: '',
       email: '',
       password: '',
+      avatarURL: '',
     },
     resolver: yupResolver(registrationSchema),
   });
 
   const handleFileSelect = event => {
     const file = event.target.files[0];
+
+    if (!file) {
+      return; // Перевірити, чи файл існує
+    }
 
     if (file.size > 50 * 1024) {
       toast.error('The file size must not exceed 50 KB');
@@ -73,16 +78,10 @@ const EditProfile = () => {
   };
 
   const onSubmit = data => {
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('password', data.password);
-    if (fileImage) {
-      formData.append('image', fileImage);
-    }
-
-    dispatch(updateUser(formData));
-    console.log(formData);
+    // Додати avatarURL до об'єкту data
+    data.avatarURL = selectedAvatar;
+    dispatch(updateUser(data));
+    console.log(data);
     reset();
   };
 
