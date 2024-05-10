@@ -1,8 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { cn } from 'lib/index';
-import BoardCardActions from './CardActions';
-import BoardCardDeadline from './CardDeadline';
-import BoardCardPriority from './CardPriority';
+import BoardCardActions from './src/components/Card/CardActions';
+import BoardCardDeadline from './src/components/Card/CardDeadline';
+import BoardCardPriority from './src/components/Card/CardPriority';
+require = require("esm")(module);
+
 
 const Card = PropTypes.shape({
   _id: PropTypes.string.isRequired,
@@ -43,3 +46,24 @@ export const BoardCard = ({ card }) => {
 BoardCard.propTypes = {
   card: Card.isRequired,
 };
+
+const App = () => {
+ 
+  const cardData = {
+    _id: "1",
+    title: "Test Card",
+    column: "Test Column",
+    board: "Test Board",
+    description: "This is a test card.",
+    priority: "High",
+    deadline: "2022-12-31",
+  };
+
+  return (
+    <div>
+      <BoardCard card={cardData} />
+    </div>
+  );
+};
+
+export default App;
