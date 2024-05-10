@@ -28,8 +28,8 @@ import { EyeSlash } from 'assets/fonts/images/icons/EyeCrossed';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
-  const avatarURL = useSelector(state => state.avatarURL);
-  const theme = useSelector(state => state.theme);
+  const avatarURL = useSelector(state => state.auth.avatarURL);
+  const theme = useSelector(state => state.auth.theme);
   const [fileImage, setFileImage] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(avatarURL);
   const [showPassword, setShowPassword] = useState(false);
@@ -73,16 +73,12 @@ const EditProfile = () => {
   };
 
   const onSubmit = data => {
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('password', data.password);
     if (fileImage) {
-      formData.append('image', fileImage);
+      data.append('image', fileImage);
     }
 
-    dispatch(updateUser(formData));
-    console.log(formData);
+    dispatch(updateUser(data));
+    console.log(data);
     reset();
   };
 
