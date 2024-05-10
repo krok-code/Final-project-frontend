@@ -25,18 +25,15 @@ import { toast } from 'react-toastify';
 import { Container } from 'components/Auth/RegistrationPg/RegistrationPg.styled';
 import { Eye } from 'assets/fonts/images/icons/Eye';
 import { EyeSlash } from 'assets/fonts/images/icons/EyeCrossed';
-
 const EditProfile = () => {
   const dispatch = useDispatch();
   const avatarURL = useSelector(state => state.auth.avatarURL);
   const theme = useSelector(state => state.auth.theme);
-  const [fileImage, setFileImage] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(avatarURL);
   const [showPassword, setShowPassword] = useState(false);
   const swapPassword = () => {
     setShowPassword(!showPassword);
   };
-
   const {
     register,
     handleSubmit,
@@ -52,31 +49,23 @@ const EditProfile = () => {
     },
     resolver: yupResolver(registrationSchema),
   });
-
   const handleFileSelect = event => {
     const file = event.target.files[0];
-
     if (!file) {
       return; // Перевірити, чи файл існує
     }
-
     if (file.size > 50 * 1024) {
       toast.error('The file size must not exceed 50 KB');
       return;
     }
-
     if (file) {
-      setFileImage(file);
       const reader = new FileReader();
-
       reader.onload = () => {
         setSelectedAvatar(reader.result);
       };
-
       reader.readAsDataURL(file);
     }
   };
-
   const onSubmit = data => {
     // Додати avatarURL до об'єкту data
     data.avatarURL = selectedAvatar;
@@ -84,7 +73,6 @@ const EditProfile = () => {
     console.log(data);
     reset();
   };
-
   return (
     <Container>
       <Wrapper>
@@ -143,11 +131,9 @@ const EditProfile = () => {
             {showPassword ? <Eye /> : <EyeSlash />}
           </button>
         </Wrap>
-
         <Button type="submit">Send</Button>
       </Form>
     </Container>
   );
 };
-
 export default EditProfile;
