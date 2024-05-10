@@ -1,26 +1,28 @@
-// import { Modal } from '../../mainModal/MainModal';
-// import { modalNames } from '../../../constant/constant';
-import AddBoard from 'components/AddBoard/AddBoard';
-import { CloseModalCross } from '../../mainModal/CloseModal';
+import React from 'react';
 import {
+  Div,
   ModalContainer,
-  ModalTitle,
   ModalHeader,
+  ModalTitle,
+  CloseModalCrossStyled,
 } from '../EditProfileModal/EditProfileModal.styled';
+import { Close } from 'assets/fonts/images/icons/Close';
+import AddBoard from 'components/AddBoard/AddBoard';
 
-const AddBoardModal = () => {
+const AddBoardModal = ({ onClose }) => {
   return (
-    // <Modal modalId={modalNames.ADD_BOARD}>
-    <>
-      <ModalContainer>
+    <Div onClick={onClose}>
+      <ModalContainer onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>New board</ModalTitle>
-          <CloseModalCross />
+          <CloseModalCrossStyled type="button" onClick={onClose}>
+            <Close />
+          </CloseModalCrossStyled>
         </ModalHeader>
         <AddBoard />
       </ModalContainer>
-    </>
-    // </Modal>
+    </Div>
   );
 };
+
 export default AddBoardModal;

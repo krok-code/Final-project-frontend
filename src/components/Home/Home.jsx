@@ -8,33 +8,49 @@ import Header from '../Header/Header';
 
 import { HomePageContainer, MainContainer } from './Home.styled';
 import { ThemeProvider } from 'styled-components';
-import { darkTheme } from '../../assets/theme/theme';
+// import { selectTheme } from '../../redux/selectors';
 
 import Board from 'pages/ScreensPage/Board/Board';
-// import { MainWrapper } from '../../components/ScreensPage/ScreensPage.styled';
+// import { useNavigate } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import {
+//   getDashboardById,
+//   getAllDashboards,
+// } from '../../redux/cards/cardsReducers';
+// import { useEffect } from 'react';
 
 const HomePage = () => {
   const theme = useTheme();
-  //   const [aside, setAside] = useState(false);
-  //   const location = useLocation();
 
-  //   const board = useSelector(state => state.currentBoardId); // Ensure correct state selection
+  //   const activeUserTheme = useSelector(selectTheme);
+  //   const dispatch = useDispatch();
+  //   const navigate = useNavigate();
 
-  //   function handleAsideHide() {
-  //     setAside(prevState => !prevState);
-  //   }
+  //   const selectThemeIndex = () => {
+  //     if (activeUserTheme === 'dark') {
+  //       return 0;
+  //     } else if (activeUserTheme === 'light') {
+  //       return 1;
+  //     } else if (activeUserTheme === 'violet') {
+  //       return 2;
+  //     }
+  //   };
+  //   useEffect(() => {
+  //     dispatch(getAllDashboards()).then(data => {
+  //       if (data.payload.length === 0) {
+  //         return;
+  //       }
+
+  //       dispatch(getDashboardById(data.payload[0]._id));
+  //       navigate(`/home/${data.payload[0].name}`);
+  //     });
+  //   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <HomePageContainer>
         <MainContainer>
           <Header /> <Board />
-          {/* <MainWrapper
-        background={board ? board.background : 'default'}
-        loc={location.pathname}
-        >
-          {location.pathname === '/home' ? <ScreensPage /> : <Outlet />}
-        </MainWrapper> */}
         </MainContainer>
       </HomePageContainer>
     </ThemeProvider>

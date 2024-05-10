@@ -1,4 +1,4 @@
-export const selectModalActiveModal = state => state.modal.activeModal;
+export const selectModalActiveModal = state => state.auth.activeModal;
 export const selectUserTheme = state => state.theme;
 export const selectUserName = state => state.userData.name;
 export const selectUser = state => state.userData;

@@ -1,24 +1,29 @@
 // import { Modal } from '../../mainModal/MainModal';
 // import { modalNames } from '../../../constant/constant';
-import { CloseModalCross } from '../../mainModal/CloseModal';
-import EditColumn from '../../EditColumn/EditColumn';
 import {
+  Div,
   ModalContainer,
-  ModalTitle,
   ModalHeader,
+  ModalTitle,
+  CloseModalCrossStyled,
 } from '../EditProfileModal/EditProfileModal.styled';
-const EditColumnModal = () => {
+import { Close } from 'assets/fonts/images/icons/Close';
+import EditColumn from '../../EditColumn/EditColumn';
+
+const EditColumnModal = ({ onClose }) => {
   return (
     // <Modal modalId={modalNames.EDIT_COLUMN}>
-    <>
-      <ModalContainer>
+    <Div onClick={onClose}>
+      <ModalContainer onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>Edit column</ModalTitle>
-          <CloseModalCross />
+          <CloseModalCrossStyled type="button" onClick={onClose}>
+            <Close />
+          </CloseModalCrossStyled>
         </ModalHeader>
         <EditColumn />
       </ModalContainer>
-    </>
+    </Div>
     // </Modal>
   );
 };

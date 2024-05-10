@@ -57,13 +57,8 @@ const AddBoard = () => {
       return;
     }
 
-    const board = {
-      name: text,
-      backgroundURL,
-      icon,
-    };
+    dispatch(addBoard({ name: text, icon: icons, backgroundURL: bgdImg }));
 
-    dispatch(addBoard(board));
     reset();
   };
 
