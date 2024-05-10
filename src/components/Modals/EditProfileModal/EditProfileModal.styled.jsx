@@ -1,5 +1,30 @@
 import styled from 'styled-components';
 
+export const CloseModalCrossStyled = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  float: inline-end;
+`;
+export const Div = styled.div`
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.priorityGreen};
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensure the modal appears above other content */
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+`;
 export const ModalContainer = styled.div`
   border-radius: 8px;
   border: 1px solid ${props => props.theme.colors.priorityGreen};

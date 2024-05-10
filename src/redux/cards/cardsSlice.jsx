@@ -4,27 +4,20 @@ const {
   editColumn,
   addBoard,
   editBoard,
+  getAllDashboards,
+  deleteDashboard,
+  getDashboardById,
 } = require('./cardsReducers');
 
 const initialState = {
-  boards: [
-    {
-      columns: [
-        {
-          id: '',
-          title: '',
-          cards: [],
-        },
-      ],
-    },
-  ],
-  currentColumnId: null,
-  currentCardId: null,
-  currentBoardId: null,
-  isDeadlineToday: false,
-  isLoggedIn: false,
-  error: null,
+  boards: [],
+  currentDashboard: {},
   isLoading: false,
+  error: null,
+  columnsLength: 0,
+  currentBg: '',
+  currentName: '',
+  selectedPriority: 'show all',
 };
 
 const boardsSlice = createSlice({
@@ -32,10 +25,34 @@ const boardsSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
+      .addCase(getAllDashboards.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.boards = action.payload;
+        state.error = null;
+      })
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.boards.push(action.payload);
+      })
+      .addCase(deleteDashboard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.dashboards.findIndex(
+          item => item._id === action.payload.deletedBoard._id
+        );
+
+        state.dashboards.splice(index, 1);
+      })
+      .addCase(getDashboardById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentDashboard = action.payload;
+        state.error = null;
+
+        state.currentBg = action.payload?.dashboard?.backgroundURL;
+        state.currentName = action.payload?.dashboard?.name;
+        state.columnsLength = action.payload?.columns?.length;
+        state.selectedPriority = 'show all';
       })
       .addCase(editBoard.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -73,7 +90,10 @@ const boardsSlice = createSlice({
           addColumn.pending,
           editColumn.pending,
           addBoard.pending,
-          editBoard.pending
+          editBoard.pending,
+          getAllDashboards.pending,
+          deleteDashboard.pending,
+          getDashboardById.pending
         ),
         state => {
           state.isLoading = true;
@@ -85,7 +105,10 @@ const boardsSlice = createSlice({
           addColumn.rejected,
           editColumn.rejected,
           addBoard.rejected,
-          editBoard.rejected
+          editBoard.rejected,
+          getAllDashboards.rejected,
+          deleteDashboard.rejected,
+          getDashboardById.rejected
         ),
         (state, action) => {
           state.isLoading = false;

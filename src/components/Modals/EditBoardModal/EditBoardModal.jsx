@@ -2,25 +2,29 @@
 // import { modalNames } from '../../../constant/constant';
 
 import EditBoard from 'components/EditBoard/EditBoard';
-import { CloseModalCross } from '../../mainModal/CloseModal';
 import {
+  Div,
   ModalContainer,
-  ModalTitle,
   ModalHeader,
+  ModalTitle,
+  CloseModalCrossStyled,
 } from '../EditProfileModal/EditProfileModal.styled';
+import { Close } from 'assets/fonts/images/icons/Close';
 
-const EditBoardModal = () => {
+const EditBoardModal = ({ onClose }) => {
   return (
     // <Modal modalId={modalNames.EDIT_BOARD}>
-    <>
-      <ModalContainer>
+    <Div onClick={onClose}>
+      <ModalContainer onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>Edit board</ModalTitle>
-          <CloseModalCross />
+          <CloseModalCrossStyled type="button" onClick={onClose}>
+            <Close />
+          </CloseModalCrossStyled>
         </ModalHeader>
         <EditBoard />
       </ModalContainer>
-    </>
+    </Div>
     // </Modal>
   );
 };

@@ -1,25 +1,27 @@
 // import { Modal } from '../../mainModal/MainModal';
 // import { modalNames } from '../../../constant/constant';
-import { CloseModalCross } from '../../mainModal/CloseModal';
 import {
+  Div,
   ModalContainer,
-  ModalTitle,
   ModalHeader,
+  ModalTitle,
+  CloseModalCrossStyled,
 } from '../EditProfileModal/EditProfileModal.styled';
+import { Close } from 'assets/fonts/images/icons/Close';
 import AddColumn from 'components/AddColumn/AddColumn';
-const AddColumModal = () => {
+const AddColumModal = ({ onClose }) => {
   return (
-    // <Modal modalId={modalNames.ADD_COLUMN}>
-    <>
-      <ModalContainer>
+    <Div onClick={onClose}>
+      <ModalContainer onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>Add column</ModalTitle>
-          <CloseModalCross />
+          <CloseModalCrossStyled type="button" onClick={onClose}>
+            <Close />
+          </CloseModalCrossStyled>
         </ModalHeader>
         <AddColumn />
       </ModalContainer>
-    </>
-    // </Modal>
+    </Div>
   );
 };
 export default AddColumModal;
