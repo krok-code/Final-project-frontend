@@ -56,6 +56,10 @@ const EditProfile = () => {
   const handleFileSelect = event => {
     const file = event.target.files[0];
 
+    if (!file) {
+      return; // Перевірити, чи файл існує
+    }
+
     if (file.size > 50 * 1024) {
       toast.error('The file size must not exceed 50 KB');
       return;

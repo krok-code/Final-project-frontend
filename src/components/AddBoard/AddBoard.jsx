@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
 import { useState } from 'react';
 import data from '../../assets/fonts/images/backs-small/backs.json';
-import { addBoard } from '../../redux/cards/cardsReducers';
+import { createBoard } from '../../redux/cards/cardsReducers';
 
 const AddBoard = () => {
   const options = [
@@ -62,7 +62,7 @@ const AddBoard = () => {
       return;
     }
 
-    dispatch(addBoard({ name: text, icon: icons, backgroundURL: bgdImg }));
+    dispatch(createBoard({ name: text, icon, backgroundURL }));
 
     reset();
   };
