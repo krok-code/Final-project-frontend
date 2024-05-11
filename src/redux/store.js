@@ -26,7 +26,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     modal: modalReducer,
-    boards: boardsReducer,
+    dashboards: boardsReducer,
     menuMode: menuModeReducer,
   },
 

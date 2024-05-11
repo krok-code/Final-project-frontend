@@ -5,7 +5,7 @@ export const addColumn = createAsyncThunk(
   'addColumn',
   async ({ bordsId, text, owner }, thunkAPI) => {
     try {
-      const { data } = await authInstance.post(`api/column/${bordsId}`, {
+      const { data } = await authInstance.post(`${bordsId}`, {
         text,
         owner,
       });
@@ -43,7 +43,7 @@ export const getAllDashboards = createAsyncThunk(
   'dashboards/fetchAllDashboards',
   async (_, thunkAPI) => {
     try {
-      const { data } = await authInstance.get('/dashboard');
+      const { data } = await authInstance.get('boards/');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,7 +54,7 @@ export const getDashboardById = createAsyncThunk(
   'dashboards/getById',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await authInstance.get(`/dashboard/${dashboardId}`);
+      const { data } = await authInstance.get(`boards/${dashboardId}`);
 
       return data;
     } catch (error) {
@@ -68,7 +68,7 @@ export const editDashbord = createAsyncThunk(
   async ({ dashboardId, updatedData }, thunkAPI) => {
     try {
       const { data } = await authInstance.put(
-        `/dashboard/${dashboardId}`,
+        `boards/${dashboardId}`,
         updatedData
       );
 
@@ -83,7 +83,7 @@ export const deleteDashboard = createAsyncThunk(
   'dashboards/deleteDashboard',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await authInstance.delete(`/dashboard/${dashboardId}`);
+      const { data } = await authInstance.delete(`boards/${dashboardId}`);
 
       return data;
     } catch (error) {

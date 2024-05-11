@@ -23,7 +23,7 @@ import { useState } from 'react';
 import data from '../../assets/fonts/images/backs-small/backs.json';
 import { createBoard } from '../../redux/cards/cardsReducers';
 
-const AddBoard = () => {
+const AddBoard = ({ onClose }) => {
   const options = [
     '#icon-Project',
     '#icon-star',
@@ -61,6 +61,7 @@ const AddBoard = () => {
     dispatch(createBoard({ title, icon }));
 
     reset();
+    onClose();
   };
 
   const handleBgDImg = url => {
