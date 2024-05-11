@@ -9,7 +9,7 @@ export const selectTheme = state => state.auth.theme;
 //column//
 export const selectBoards = state => state.dashboards.boards;
 export const selectBoarsId = state => state.dashboards.currentBoardId;
-export const selectColumns = state => state.dashboards.selectColumnsId;
+export const selectColumns = state => state.dashboards.columns;
 export const selectColumnsId = state => state.dashboards.columnId;
 export const selectCards = state => state.dashboards.cards;
 export const selectCardId = state => state.dashboards.cardId;

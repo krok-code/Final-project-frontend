@@ -25,18 +25,11 @@ const Header = () => {
   const userEmailSplit = userEmail.split('@')[0];
   const userName = userData?.userName;
   const userAvatar = userData?.avatarURL;
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleOpenMenu = () => {
     dispatch(openMenuMode());
   };
-  const openSidebar = () => {
-    setIsSidebarOpen(true);
-  };
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -48,7 +41,7 @@ const Header = () => {
       <BurgerBtn type="button" onClick={handleOpenMenu}>
         <Burger width={24} height={24} fillColor={'#161616'} />
       </BurgerBtn>
-      <Sidebar isOpen={isSidebarOpen} />
+      <Sidebar isOpen={isModalOpen} />
       <UserLogoContainer onClick={openModal}>
         {userName ? (
           <div>

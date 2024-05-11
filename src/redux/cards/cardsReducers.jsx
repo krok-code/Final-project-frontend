@@ -5,7 +5,7 @@ export const addColumn = createAsyncThunk(
   'addColumn',
   async ({ bordsId, text, owner }, thunkAPI) => {
     try {
-      const { data } = await authInstance.post(`${bordsId}`, {
+      const { data } = await authInstance.post(`/${bordsId}`, {
         text,
         owner,
       });
@@ -55,22 +55,6 @@ export const getDashboardById = createAsyncThunk(
   async (dashboardId, thunkAPI) => {
     try {
       const { data } = await authInstance.get(`boards/${dashboardId}`);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const editDashbord = createAsyncThunk(
-  'dashboards/editDashbord',
-  async ({ dashboardId, updatedData }, thunkAPI) => {
-    try {
-      const { data } = await authInstance.put(
-        `boards/${dashboardId}`,
-        updatedData
-      );
 
       return data;
     } catch (error) {

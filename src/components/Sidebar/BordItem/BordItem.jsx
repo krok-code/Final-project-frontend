@@ -8,7 +8,7 @@ import { closeMenuMode } from '../../../redux/menu/menuSlice';
 
 import sprite from '../../../assets/fonts/images/icons/icons-sprite.svg';
 
-import EditBoardModal from '../../Modals/EditBoardModal/EditBoardModal';
+// import EditBoardModal from '../../Modals/EditBoardModal/EditBoardModal';
 import {
   Board,
   BoardIcon,
@@ -26,7 +26,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  //   const handleClose = () => setOpen(false);
   const checkTextLength = text => {
     if (text) {
       const str = text.split('');
@@ -89,7 +89,10 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
         </StyledLink>
       </Item>
 
-      <EditBoardModal onClose={handleClose} />
+      {open &&
+        {
+          /* <EditBoardModal onClose={handleClose} /> */
+        }}
     </>
   );
 };

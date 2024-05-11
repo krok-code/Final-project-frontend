@@ -3,11 +3,6 @@ import { ColumnTask } from '../ColumnTask/ColumnTask';
 import { ContentWrapper, Wrapper } from './MainDashboard.styled';
 import AddColumnModal from '../../Modals/AddColumModal/AddColumnModal';
 import { useSelector } from 'react-redux';
-import {
-  selectBoarsId,
-  selectColumns,
-  selectColumnsLength,
-} from '../../../redux/selectors';
 import ButtonPlus from 'components/ButtonPlus/ButtonPlus';
 
 const MainDashboard = () => {
@@ -23,7 +18,7 @@ const MainDashboard = () => {
   const scrollRef = useRef(null);
   const [startX, setStartX] = useState(0);
 
-  const handleOpen = () => {
+  const onOpen = () => {
     setOpen(true);
     setIsDragging(false);
   };
@@ -66,13 +61,15 @@ const MainDashboard = () => {
         {columns &&
           columns.map(item => <ColumnTask key={item._id} item={item} />)}
 
-        <ButtonPlus openModal={handleOpen} />
+        <ButtonPlus approve={true} onOpen={onOpen} text="Add column" />
       </ContentWrapper>
 
-      <AddColumnModal
-        dashboardId={currentDashboard?._id}
-        onClose={handleCloseModal}
-      />
+      {open && setIsDragging && (
+        <AddColumnModal
+          dashboardId={currentDashboard?._id}
+          onClose={handleCloseModal}
+        />
+      )}
     </Wrapper>
   );
 };

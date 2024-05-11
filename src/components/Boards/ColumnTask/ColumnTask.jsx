@@ -15,7 +15,7 @@ import {
   ContentWrapper,
 } from './ColumnTask.styled';
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export const ColumnTask = ({ item }) => {
   const dispatch = useDispatch();
@@ -23,9 +23,9 @@ export const ColumnTask = ({ item }) => {
   const [openColumnModal, setOpenColumnModal] = useState(false);
   //   const [openCardModal, setOpenCardModal] = useState(false);
 
-  const selectedPriority = useSelector(
-    state => state.dashboards.selectedPriority
-  );
+  // const selectedPriority = useSelector(
+  //   state => state.dashboards.selectedPriority
+  // );
 
   const handleOpenColumnModal = () => setOpenColumnModal(true);
   const handleCloseColumnModal = () => setOpenColumnModal(false);
@@ -33,14 +33,14 @@ export const ColumnTask = ({ item }) => {
   //   const handleOpenCardModal = () => setOpenCardModal(true);
   //   const handleCloseCardModal = () => setOpenCardModal(false);
 
-  const filteredColumn =
-    item.cards && item.cards.filter(item => item.priority === selectedPriority);
+  // const filteredColumn =
+  //   item.cards && item.cards.filter(item => item.priority === selectedPriority);
 
-  const columnLength = item.cards && item.cards.length;
-  const fileteredColumnLength = filteredColumn && filteredColumn.length;
+  // const columnLength = item.cards && item.cards.length;
+  // const fileteredColumnLength = filteredColumn && filteredColumn.length;
 
-  const condition =
-    selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
+  // const condition =
+  //   selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
 
   return (
     <Wrapper>
@@ -76,11 +76,13 @@ export const ColumnTask = ({ item }) => {
         <ButtonPlus onClick={handleOpenCardModal} /> */}
       </ContentWrapper>
 
-      <EditColumnModal
-        title={item.title}
-        columnId={item._id}
-        closeModal={handleCloseColumnModal}
-      />
+      {openColumnModal && (
+        <EditColumnModal
+          title={item.title}
+          columnId={item._id}
+          closeModal={handleCloseColumnModal}
+        />
+      )}
 
       {/* <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} /> */}
     </Wrapper>

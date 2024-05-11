@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; // Додайте імпорт useState
 import { useSelector, useDispatch } from 'react-redux'; // Додайте імпорт useSelector та useDispatch
-import { closeMenuMode, openMenuMode } from '../../redux/menu/menuSlice';
-import { selectTheme } from '../../redux/selectors';
+import { closeMenuMode } from '../../redux/menu/menuSlice';
+// import { selectTheme } from '../../redux/selectors';
 import { selectIsMenuOpen } from '../../redux/menu/selectors';
 import BoardList from './BorderList/BorderList';
 // import NeedHelpBlock from 'components/Sidebar/NeedHelpBlock/NeedHelpBlock';
@@ -20,14 +20,13 @@ import {
   BtnLogOut,
   IconLogOut,
   TextLogOut,
-  IconClose,
   Backdrop,
 } from './Sidebar.styled';
 import { logoutUser } from '../../redux/authorization/authReducer';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const activeUserTheme = useSelector(selectTheme);
+  //   const activeUserTheme = useSelector(selectTheme);
   const menuMode = useSelector(selectIsMenuOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -41,13 +40,13 @@ const Sidebar = () => {
   const handleBackdropClick = () => {
     dispatch(closeMenuMode()); // Закриваємо Sidebar при кліку на фон
   };
-  const setIconLogo = () => {
-    if (activeUserTheme === 'dark' || activeUserTheme === 'light') {
-      return '#icon-logo';
-    } else if (activeUserTheme === 'violet') {
-      return '#icon-logo-violet';
-    }
-  };
+  //   const setIconLogo = () => {
+  //     if (activeUserTheme === 'dark' || activeUserTheme === 'light') {
+  //       return '#icon-logo';
+  //     } else if (activeUserTheme === 'violet') {
+  //       return '#icon-logo-violet';
+  //     }
+  //   };
 
   return (
     <Backdrop isOpen={menuMode} onClick={handleBackdropClick}>

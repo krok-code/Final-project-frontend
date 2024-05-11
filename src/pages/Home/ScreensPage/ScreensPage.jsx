@@ -1,4 +1,3 @@
-import { selectCurrentBg, selectCurrentName } from '../../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import HeaderDashboard from 'components/Boards/HeaderDashboard/HeaderDashboard';
@@ -23,7 +22,7 @@ const ScreensPage = () => {
     <Wrapper onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
       <HeaderDashboard children={currentName} />
 
-      {/* <MainDashboard /> */}
+      <MainDashboard />
     </Wrapper>
   );
 };

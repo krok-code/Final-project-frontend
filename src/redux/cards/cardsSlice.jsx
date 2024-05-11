@@ -52,7 +52,7 @@ const boardsSlice = createSlice({
       })
       .addCase(getDashboardById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.currentDashboard = action.payload;
+        state.currentBoardId = action.payload;
         state.error = null;
 
         state.currentBg = action.payload?.dashboard?.backgroundURL;
@@ -80,14 +80,12 @@ const boardsSlice = createSlice({
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.boards.columns.push(action.payload);
+        state.currentBoardId.columns.push(action.payload);
       })
       .addCase(editColumn.fulfilled, (state, action) => {
         const { _id, text } = action.payload;
-        const columnIndex = state.boards.columns.findIndex(
-          item => item._id === _id
-        );
-        state.boards.columns[columnIndex].text = text;
+        const columnIndex = state.columns.findIndex(item => item._id === _id);
+        state.columns[columnIndex].text = text;
         state.isLoading = false;
         state.error = null;
       })

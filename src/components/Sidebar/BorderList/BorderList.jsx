@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { selectBoards } from '../../../redux/selectors';
 
 import BoardItem from '../BordItem/BordItem';
 import { List } from './BorderList.styled';
