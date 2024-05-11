@@ -6,13 +6,13 @@ export const selectUserData = state => state.auth.userData;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectTheme = state => state.auth.theme;
 
-export const selectCurrentDashboard = state =>
-  state.dashboards.currentDashboard.dashboard;
-
 //column//
-export const selectAllDashboards = state => state.dashboards.boards;
+export const selectBoards = state => state.dashboards.boards;
 export const selectBoarsId = state => state.dashboards.currentBoardId;
 export const selectColumns = state => state.dashboards.selectColumnsId;
 export const selectColumnsId = state => state.dashboards.columnId;
 export const selectCards = state => state.dashboards.cards;
 export const selectCardId = state => state.dashboards.cardId;
+export const selectCurrentBg = state => state.dashboards.currentBg;
+export const selectCurrentName = state => state.dashboards.currentName;
+export const selectColumnsLength = state => state.dashboards.columnsLength;

@@ -37,8 +37,9 @@ const boardsSlice = createSlice({
       .addCase(createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.currentDashboardId = action.payload._id;
-        state.boards.push(...action.payload);
+        state.currentBoardId = action.payload._id;
+        state.boards = [...state.boards, action.payload];
+        // state.boards.push(action.payload);
       })
       .addCase(deleteDashboard.fulfilled, (state, action) => {
         state.isLoading = false;

@@ -14,7 +14,9 @@ import { darkTheme } from '../../assets/theme/theme';
 
 const WelcomePage = lazy(() => import('pages/WelcomePg/WelcomePage'));
 const HomePage = lazy(() => import('pages/Home/Home'));
-const ScreensPage = lazy(() => import('pages/ScreensPage/ScreensPage'));
+const ScreensPage = lazy(() =>
+  import('../../pages/Home/ScreensPage/ScreensPage')
+);
 const AuthPage = lazy(() => import('components/Auth/Auth'));
 const LogIn = lazy(() => import('components/Auth/LogInPg/LogInPg'));
 const Registration = lazy(() =>
@@ -43,12 +45,14 @@ export const App = () => {
                 }
               />
               <Route
-            path="/home"
-            element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
-          >
-            {' '}
-            <Route path=":boardName" element={<ScreensPage />} />
-          </Route>
+                path="/home"
+                element={
+                  <PrivateRoute redirectTo="/" component={<HomePage />} />
+                }
+              >
+                {' '}
+                <Route path=":boardName" element={<ScreensPage />} />
+              </Route>
               <Route
                 path="auth/:id"
                 element={

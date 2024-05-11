@@ -94,8 +94,9 @@ export const deleteDashboard = createAsyncThunk(
 export const createBoard = createAsyncThunk(
   'addBoard',
   async (formData, thunkAPI) => {
+    console.log('formData:', formData);
     try {
-      const { data } = await authInstance.post('/boards/', formData);
+      const { data } = await authInstance.post('boards/', formData);
 
       return data;
     } catch (error) {

@@ -8,7 +8,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { editColumn } from 'redux/cards/cardsReducers';
+import { editColumn } from '../../redux/cards/cardsReducers';
 
 const EditColumn = ({ text, columnId }) => {
   const dispatch = useDispatch();

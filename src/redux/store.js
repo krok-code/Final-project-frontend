@@ -14,6 +14,7 @@ import {
 import { authReducer } from '../redux/authorization/authSlice';
 import storage from 'redux-persist/lib/storage';
 import { boardsReducer } from './cards/cardsSlice';
+import { menuModeReducer } from './menu/menuSlice';
 
 const authConfig = {
   key: 'auth',
@@ -26,6 +27,7 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     modal: modalReducer,
     boards: boardsReducer,
+    menuMode: menuModeReducer,
   },
 
   middleware: getDefaultMiddleware =>

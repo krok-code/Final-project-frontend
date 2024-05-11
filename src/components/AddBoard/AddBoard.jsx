@@ -47,7 +47,7 @@ const AddBoard = () => {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      text: '',
+      title: '',
       backgroundURL: bgdImg,
       icon: icons,
     },
@@ -55,14 +55,10 @@ const AddBoard = () => {
   });
 
   const onSubmit = data => {
-    const { text, icon, backgroundURL } = data;
-    console.log('Submitted data:', text, icon, backgroundURL);
-    if (!text.trim()) {
-      alert('Title cannot be empty');
-      return;
-    }
+    const { title, icon } = data;
+    console.log(data);
 
-    dispatch(createBoard({ name: text, icon, backgroundURL }));
+    dispatch(createBoard({ title, icon }));
 
     reset();
   };
@@ -79,9 +75,9 @@ const AddBoard = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
         type="text"
-        id="text"
+        id="title"
         placeholder="Title"
-        {...register('text')}
+        {...register('title')}
         error={touched.text && errors.text && errors.text.message}
       />
       {errors.text && <Error>{errors.text.message}</Error>}
