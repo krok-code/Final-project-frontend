@@ -11,11 +11,12 @@ const {
 
 const initialState = {
   boards: [],
-  columns: [],
-  columnId: null,
-  currentBoardId: null,
-  cards: [],
-  cardId: null,
+
+  currentBoardId: {},
+  // cards: [],
+  // cardId: null,
+  // columns: [],
+  // columnId: null,
   isLoading: false,
   error: null,
   columnsLength: 0,
@@ -37,25 +38,26 @@ const boardsSlice = createSlice({
       .addCase(createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.currentDashboardId = action.payload._id;
-        state.boards.push(...action.payload);
+        state.currentBoardId = action.payload._id;
+        state.boards = [...state.boards, action.payload];
+        // state.boards.push(action.payload);
       })
       .addCase(deleteDashboard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.dashboards.findIndex(
+        const idx = state.dashboards.findIndex(
           item => item._id === action.payload.deletedBoard._id
         );
 
-        state.dashboards.splice(index, 1);
+        state.dashboards.splice(idx, 1);
       })
       .addCase(getDashboardById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.currentDashboard = action.payload;
+        state.currentBoardId = action.payload;
         state.error = null;
 
-        state.currentBg = action.payload?.dashboard?.backgroundURL;
-        state.currentName = action.payload?.dashboard?.name;
+        state.currentBg = action.payload?.board?.backgroundURL;
+        state.currentName = action.payload?.board?.name;
         state.columnsLength = action.payload?.columns?.length;
         state.selectedPriority = 'show all';
       })
@@ -79,14 +81,12 @@ const boardsSlice = createSlice({
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.boards.columns.push(action.payload);
+        state.currentBoardId.columns.push(action.payload);
       })
       .addCase(editColumn.fulfilled, (state, action) => {
         const { _id, text } = action.payload;
-        const columnIndex = state.boards.columns.findIndex(
-          item => item._id === _id
-        );
-        state.boards.columns[columnIndex].text = text;
+        const columnIndex = state.columns.findIndex(item => item._id === _id);
+        state.columns[columnIndex].text = text;
         state.isLoading = false;
         state.error = null;
       })

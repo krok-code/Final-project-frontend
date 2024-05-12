@@ -7,13 +7,13 @@ import {
 } from 'components/Auth/RegistrationPg/RegistrationPg.styled';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addColumn } from '../../redux/cards/cardsReducers';
-// import { selectColumns } from '../../redux/selectors';
+import { selectColumns } from '../../redux/selectors';
 
-const AddColumn = ({ text, boardId }) => {
+const AddColumn = () => {
   const dispatch = useDispatch();
-  //   const columns = useSelector(selectColumns);
+  const columns = useSelector(selectColumns);
 
   const {
     register,
@@ -28,20 +28,16 @@ const AddColumn = ({ text, boardId }) => {
     resolver: yupResolver(editColumnSchema),
   });
 
-  const onSubmit = data => {
-    //   const alreadyExistsIndex = columns.findIndex
-    // item => {
-    //   const name = item.text.toLowerCase();
-    //   const newName = text.toLowerCase();
-    //   return name === newName;
-    // };
-    // if (alreadyExistsIndex >= 0) {
-    //   const alreadyExistsColumn = columns[alreadyExistsIndex];
-    //   return `${alreadyExistsColumn.name} is already added to contact list`;
-    // } else {
-    dispatch(addColumn({ boardId, text: data.text }));
-    console.log({ text });
-    // }
+  const onSubmit = (data, bordId) => {
+    const alreadyExistsIndex = columns.findIndex;
+
+    if (alreadyExistsIndex >= 0) {
+      const alreadyExistsColumn = columns[alreadyExistsIndex];
+      return `${alreadyExistsColumn.name} is already added to contact list`;
+    } else {
+      dispatch(addColumn({ bordId, data }));
+      // console.log({ text });
+    }
     reset();
   };
 

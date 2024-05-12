@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Burger from 'assets/fonts/images/icons/Burger';
 import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 import {
@@ -13,7 +13,10 @@ import {
 import { selectUserData } from '../../redux/selectors';
 import userLight from '../../assets/fonts/images/userLogo/userLight.jpg';
 import userDark from '../../assets/fonts/images/userLogo/userDark.jpg';
+import Sidebar from 'components/Sidebar/Sidebar';
+import { openMenuMode } from '../../redux/menu/menuSlice';
 const Header = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const avatarURL = useSelector(state => state.avatarURL);
   const theme = useSelector(state => state.auth.theme);
@@ -22,6 +25,11 @@ const Header = () => {
   const userEmailSplit = userEmail.split('@')[0];
   const userName = userData?.userName;
   const userAvatar = userData?.avatarURL;
+
+  const handleOpenMenu = () => {
+    dispatch(openMenuMode());
+  };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -30,9 +38,10 @@ const Header = () => {
   };
   return (
     <HeaderSection>
-      <BurgerBtn type="button">
+      <BurgerBtn type="button" onClick={handleOpenMenu}>
         <Burger width={24} height={24} fillColor={'#161616'} />
       </BurgerBtn>
+      <Sidebar isOpen={isModalOpen} />
       <UserLogoContainer onClick={openModal}>
         {userName ? (
           <div>

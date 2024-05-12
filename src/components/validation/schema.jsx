@@ -29,7 +29,7 @@ export const needHelpSchema = yup.object().shape({
 });
 
 export const editColumnSchema = yup.object().shape({
-  text: yup
+  title: yup
     .string()
     .min(3, 'Title must be at least 3 characters long')
     .required('Title is required'),

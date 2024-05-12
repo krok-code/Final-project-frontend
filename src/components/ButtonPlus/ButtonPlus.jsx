@@ -1,9 +1,9 @@
 import { Button, IconWrapper, Icon, Wrap } from './ButtonPlus.styled';
 import sprite from '../../assets/fonts/images/icons/icons-sprite.svg';
 
-const ButtonPlus = ({ text, approve }) => {
+const ButtonPlus = ({ text, approve, onOpen }) => {
   return (
-    <Button type="submit" $approve={approve}>
+    <Button type="submit" $approve={approve} onClick={onOpen}>
       <Wrap>
         <IconWrapper>
           <Icon>

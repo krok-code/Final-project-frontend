@@ -5,7 +5,7 @@ export const addColumn = createAsyncThunk(
   'addColumn',
   async ({ bordsId, text, owner }, thunkAPI) => {
     try {
-      const { data } = await authInstance.post(`api/column/${bordsId}`, {
+      const { data } = await authInstance.post(`/${bordsId}`, {
         text,
         owner,
       });
@@ -43,7 +43,7 @@ export const getAllDashboards = createAsyncThunk(
   'dashboards/fetchAllDashboards',
   async (_, thunkAPI) => {
     try {
-      const { data } = await authInstance.get('/dashboard');
+      const { data } = await authInstance.get('boards/');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,23 +54,7 @@ export const getDashboardById = createAsyncThunk(
   'dashboards/getById',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await authInstance.get(`/dashboard/${dashboardId}`);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const editDashbord = createAsyncThunk(
-  'dashboards/editDashbord',
-  async ({ dashboardId, updatedData }, thunkAPI) => {
-    try {
-      const { data } = await authInstance.put(
-        `/dashboard/${dashboardId}`,
-        updatedData
-      );
+      const { data } = await authInstance.get(`boards/${dashboardId}`);
 
       return data;
     } catch (error) {
@@ -83,7 +67,7 @@ export const deleteDashboard = createAsyncThunk(
   'dashboards/deleteDashboard',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await authInstance.delete(`/dashboard/${dashboardId}`);
+      const { data } = await authInstance.delete(`boards/${dashboardId}`);
 
       return data;
     } catch (error) {
@@ -94,8 +78,9 @@ export const deleteDashboard = createAsyncThunk(
 export const createBoard = createAsyncThunk(
   'addBoard',
   async (formData, thunkAPI) => {
+    console.log('formData:', formData);
     try {
-      const { data } = await authInstance.post('/boards/', formData);
+      const { data } = await authInstance.post('boards/', formData);
 
       return data;
     } catch (error) {
