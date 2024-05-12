@@ -1,67 +1,93 @@
-import Layout from 'components/Layout/Layout';
-import Loader from 'components/Loader/Loader';
-import PrivateRoute from 'components/Routes/PrivateRoute';
-import PublicRoute from 'components/Routes/PublicRoute';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
+import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { refreshUser } from '../../redux/auth/authOperations';
+import { PrivateRoute, PublicRoute } from 'routes';
+import SharedLayout from 'layouts/SharedLayout';
+import Loader from 'components/Loader';
 
-import { lazy, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
-import { refreshUser } from '../../redux/authorization/authReducer';
-import { selectIsRefreshing } from '../../redux/selectors';
-import { ThemeProvider } from 'styled-components';
-import { darkTheme } from '../../assets/theme/theme';
+const WelcomePage = lazy(() => import('pages/WelcomePage'));
+const AuthPage = lazy(() => import('pages/AuthPage'));
+const HomePage = lazy(() => import('pages/HomePage'));
+const ScreensPage = lazy(() => import('pages/ScreensPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const StatsPage = lazy(() => import('pages/StatsPage'));
+const SchedulePage = lazy(() => import('pages/SchedulePage'));
 
-const WelcomePage = lazy(() => import('pages/WelcomePg/WelcomePage'));
-const HomePage = lazy(() => import('pages/Home/Home'));
-const ScreensPage = lazy(() => import('pages/ScreensPage/ScreensPage'));
-const AuthPage = lazy(() => import('components/Auth/Auth'));
-const LogIn = lazy(() => import('components/Auth/LogInPg/LogInPg'));
-const Registration = lazy(() =>
-  import('components/Auth/RegistrationPg/RegistrationPg')
-);
-
-export const App = () => {
+const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const { isRefreshing } = useAuth();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return (
+
+  return isRefreshing ? (
+    <Loader strokeColor="#fff" />
+  ) : (
     <>
-      {' '}
-      <ThemeProvider theme={darkTheme}>
-        {isRefreshing ? (
-          <Loader />
-        ) : (
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route
-                index
-                element={
-                  <PublicRoute redirectTo="/home" component={<WelcomePage />} />
-                }
-              />
-              <Route
-            path="/home"
-            element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
-          >
-            {' '}
-            <Route path=":boardName" element={<ScreensPage />} />
+      <Toaster position="top-center" />
+
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PublicRoute component={<WelcomePage />} redirectTo="/home" />
+            }
+          />
+          <Route
+            path="/auth/:id"
+            element={
+              <PublicRoute component={<AuthPage />} redirectTo="/home" />
+            }
+          />
+          <Route path="/home" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <PrivateRoute
+                  component={<HomePage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="board/:boardId"
+              element={
+                <PrivateRoute
+                  component={<ScreensPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="stats"
+              element={
+                <PrivateRoute
+                  component={<StatsPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="schedule"
+              element={
+                <PrivateRoute
+                  component={<SchedulePage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
           </Route>
-              <Route
-                path="auth/:id"
-                element={
-                  <PublicRoute redirectTo="/" component={<AuthPage />} />
-                }
-              >
-                <Route path="login" element={<LogIn />} />
-                <Route path="registration" element={<Registration />} />
-              </Route>
-            </Route>
-          </Routes>
-        )}
-      </ThemeProvider>
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
+
+export default App;

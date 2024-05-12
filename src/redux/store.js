@@ -1,9 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import { modalReducer } from './modal/modalSlice';
 import {
-  persistReducer,
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,23 +9,27 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from '../redux/authorization/authSlice';
 import storage from 'redux-persist/lib/storage';
-import { boardsReducer } from './cards/cardsSlice';
+import { authReducer } from './auth/authSlice';
+import { boardsReducer } from './board/boardSlice';
+import { themeReducer } from './theme/themeSlice';
+import { supportReducer } from './support/supportSlice';
+import { boardSearchReducer } from './search/searchSlice';
 
-const authConfig = {
+const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshToken'],
 };
-const persistedAuthReducer = persistReducer(authConfig, authReducer);
+
 export const store = configureStore({
   reducer: {
-    auth: persistedAuthReducer,
-    modal: modalReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     boards: boardsReducer,
+    theme: themeReducer,
+    support: supportReducer,
+    search: boardSearchReducer,
   },
-
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
