@@ -1,14 +1,11 @@
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import {
   deleteDashboard,
   getDashboardById,
 } from '../../../redux/cards/cardsReducers';
 import { closeMenuMode } from '../../../redux/menu/menuSlice';
-
 import sprite from '../../../assets/fonts/images/icons/icons-sprite.svg';
-
-// import EditBoardModal from '../../Modals/EditBoardModal/EditBoardModal';
 import {
   Board,
   BoardIcon,
@@ -20,13 +17,12 @@ import {
   StyledLink,
 } from './BordItem.styled';
 
-const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
+const BoardItem = ({ item, idx, onActive, activeProjectIndex }) => {
   const dispatch = useDispatch();
-
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-  //   const handleClose = () => setOpen(false);
+
   const checkTextLength = text => {
     if (text) {
       const str = text.split('');
@@ -36,7 +32,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
       }
       return str.splice(0, 10).join('') + '...';
     }
-    return ''; // або яке-небудь інше значення за замовчуванням, якщо text === undefined
+    return '';
   };
 
   const handleDragStart = event => {
@@ -50,35 +46,37 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   return (
     <>
       <Item
-        className={activePojectIndex === index ? 'active' : ''}
+        className={activeProjectIndex === idx ? 'active' : ''}
         draggable={false}
         onDragStart={handleDragStart}
         onContextMenu={handleContextMenu}
       >
-        <StyledLink to={`${item.name}`}>
+        <StyledLink to={item.path}>
           <Board>
-            <BoardIcon className={activePojectIndex === index ? 'active' : ''}>
+            <BoardIcon className={activeProjectIndex === idx ? 'active' : ''}>
               <use href={sprite + item.icon} />
             </BoardIcon>
 
             <BoardTitle
               onClick={() => {
-                onActive(index);
+                onActive(idx);
                 dispatch(closeMenuMode());
                 dispatch(getDashboardById(item._id));
               }}
-              className={activePojectIndex === index ? 'active' : ''}
+              className={activeProjectIndex === idx ? 'active' : ''}
             >
               {checkTextLength(item.name)}
             </BoardTitle>
           </Board>
           <IconsBlock>
-            <IconEdit aria-label="edit icon" onClick={handleOpen}>
-              <use href={sprite + `#icon-pencil`} />
-            </IconEdit>
+            {open && (
+              <IconEdit aria-label="edit icon" onClick={handleOpen}>
+                <use href={sprite + `#icon-pencil`} />
+              </IconEdit>
+            )}
 
             <IconDel
-              aria-label="delit icon"
+              aria-label="delete icon"
               onClick={() => {
                 dispatch(deleteDashboard(item._id));
               }}
@@ -89,10 +87,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
         </StyledLink>
       </Item>
 
-      {open &&
-        {
-          /* <EditBoardModal onClose={handleClose} /> */
-        }}
+      {/* <EditBoardModal onClose={handleClose} /> */}
     </>
   );
 };

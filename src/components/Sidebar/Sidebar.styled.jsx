@@ -13,7 +13,6 @@ export const Backdrop = styled.div`
       ? 'block'
       : 'none'}; /* Відображаємо фон тільки якщо Sidebar відкрито */
 `;
-
 export const Aside = styled.div`
   position: absolute;
   top: 0;

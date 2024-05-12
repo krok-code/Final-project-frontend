@@ -11,11 +11,12 @@ const {
 
 const initialState = {
   boards: [],
-  columns: [],
-  columnId: null,
-  currentBoardId: null,
-  cards: [],
-  cardId: null,
+
+  currentBoardId: {},
+  // cards: [],
+  // cardId: null,
+  // columns: [],
+  // columnId: null,
   isLoading: false,
   error: null,
   columnsLength: 0,
@@ -44,19 +45,19 @@ const boardsSlice = createSlice({
       .addCase(deleteDashboard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.dashboards.findIndex(
+        const idx = state.dashboards.findIndex(
           item => item._id === action.payload.deletedBoard._id
         );
 
-        state.dashboards.splice(index, 1);
+        state.dashboards.splice(idx, 1);
       })
       .addCase(getDashboardById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.currentBoardId = action.payload;
         state.error = null;
 
-        state.currentBg = action.payload?.dashboard?.backgroundURL;
-        state.currentName = action.payload?.dashboard?.name;
+        state.currentBg = action.payload?.board?.backgroundURL;
+        state.currentName = action.payload?.board?.name;
         state.columnsLength = action.payload?.columns?.length;
         state.selectedPriority = 'show all';
       })

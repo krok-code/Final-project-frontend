@@ -6,7 +6,7 @@ export const Item = styled.li`
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-
+  -user-drag: none;
   user-select: none;
 `;
 
