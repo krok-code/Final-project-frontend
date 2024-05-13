@@ -32,7 +32,7 @@ provides a convenient way to organize tasks and collaborate with teams.
 Clone the project
 
 ```bash
-  git clone https://github.com/lizaklimova/task-pro.git
+  git clone https://github.com/krok-code/Final-project-frontend
 ```
 
 Go to the project directory
@@ -89,7 +89,7 @@ TaskPro - це додаток, розроблений для ефективно�
 Склонуйте проєкт
 
 ```bash
-  git clone https://github.com/lizaklimova/task-pro.git
+  git clone https://github.com/krok-code/Final-project-frontend
 ```
 
 Перейдіть в кореневу папку
