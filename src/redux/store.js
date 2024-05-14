@@ -1,46 +1,41 @@
-import { configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
-import { authReducer } from "./auth/slice";
-import { boardsReducer } from "./boards/slice";
-import { setupAxiosInterceptors } from "api/axiosSettings";
+import { configureStore } from '@reduxjs/toolkit';
 
+import { modalReducer } from './modal/modalSlice';
 import {
-  persistStore,
   persistReducer,
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from 'redux-persist';
+import { authReducer } from '../redux/authorization/authSlice';
+import storage from 'redux-persist/lib/storage';
+import { boardsReducer } from './cards/cardsSlice';
+import { menuModeReducer } from './menu/menuSlice';
 
-const authPersistConfig = {
-  key: "auth",
+const authConfig = {
+  key: 'auth',
   storage,
-  whitelist: ["token", "refreshToken"],
+  whitelist: ['token'],
 };
-
-const boardsPersistConfig = {
-  key: "boards",
-  storage,
-  whitelist: ["items", "currentBoard"],
-};
-
+const persistedAuthReducer = persistReducer(authConfig, authReducer);
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    boards: persistReducer(boardsPersistConfig, boardsReducer),
+    auth: persistedAuthReducer,
+    modal: modalReducer,
+    dashboards: boardsReducer,
+    menuMode: menuModeReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === "development",
 });
-
-setupAxiosInterceptors(store);
 
 export const persistor = persistStore(store);
